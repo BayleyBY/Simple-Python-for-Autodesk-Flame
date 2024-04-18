@@ -1,0 +1,95 @@
+'''
+Script Name: BB Timesheet
+Script Version: 1.0
+Flame Version: 2024
+Written by: Bryan Bayley
+Creation Date: 2023.04.20
+
+Description:
+This Script is a work-in-progress. The goal is to automatically generate a 'timesheet' for tracking hours, billing, etc. 
+Anytime you start flame, switch projects, or exit flame the date and time will be noted and a text file on the Desktop
+will list the hours and minutes spent on that project. If you are not on billable time you should switch to a 
+null project or exit flame.
+
+For now it's a simple list of starting, switching exiting projects. Eventually I want the script to add up the time spent
+in each project to give you a daily or weekly total.
+
+Change the desktop_path and log_file and csv_file to suite your needs.
+
+known issues:
+- If flame crashes you won't get an ending time for that project
+- Refreshing python hooks in flame will trigger a new 'start' time.
+- Switching between multiple projects quickly (within the same minute) might make it drop one of the entries but hopefully you aren't tracking your time down to the second.
+'''
+
+import datetime
+import os
+import csv
+import flame
+
+# Define the path to the desktop and the log file
+desktop_path = os.path.expanduser("~/Desktop")
+log_file = os.path.join(desktop_path, "Timesheet.txt")
+csv_file = os.path.join(desktop_path, "Timesheet.csv")
+
+# Store the current project name
+current_project = flame.project.current_project.name
+
+# Get the current date and time for the start of the project. Format as a string.
+proj_start_time = datetime.datetime.now()
+proj_start_formatted_time = proj_start_time.strftime("%Y-%m-%d %H:%M")
+
+# Write the project name and time to the log file. This writes the start time of the project opened.
+with open(log_file, "a") as f:
+    f.write(f"{proj_start_formatted_time} - Flame opening project {current_project}.\n")
+
+# Detect project changes and record date/time
+def project_changed(project_name):
+    global current_project
+
+    # Get the new project name
+    new_project = flame.project.current_project.name
+    
+    # Check if the project has changed
+    if new_project != current_project:
+
+        # Calculate the duration our current project has been open.
+        duration = datetime.datetime.now() - proj_start_time
+        total_seconds = int(duration.total_seconds())
+        hours = total_seconds // 3600
+        minutes = (total_seconds % 3600) // 60
+        duration_string = f"{hours} hours {minutes} minutes"
+
+        # Get the current date and time when changing projects. Format as a string.
+        proj_change_time = datetime.datetime.now()
+        proj_change_formatted_time = proj_change_time.strftime("%Y-%m-%d %H:%M")
+
+        # Write the project name and time of the project being closed.
+        with open(log_file, "a") as f:
+            f.write(f"{proj_change_formatted_time} - Flame switched projects. {current_project} was open for {duration_string}. \n")
+
+        # Update the current project name
+        current_project = new_project
+                
+        # Write the new project name and time to the log file
+        with open(log_file, "a") as f:
+            f.write(f"{proj_change_formatted_time} - Flame switched projects and started project {current_project}.\n")     
+
+# Detect software exit and record date/time
+def app_exited(version):
+    global current_project
+    
+    # Calculate the duration of the current project
+    duration = datetime.datetime.now() - proj_start_time       
+    total_seconds = int(duration.total_seconds())
+    hours = total_seconds // 3600
+    minutes = (total_seconds % 3600) // 60
+    duration_string = f"{hours} hours and {minutes} minutes"
+
+    # Get the current date and time when project is ending. Format as a string.
+    proj_end_time = datetime.datetime.now()
+    proj_end_formatted_time = proj_end_time.strftime("%Y-%m-%d %H:%M")    
+
+    # Write Exit and time to the log file
+    with open(log_file, "a") as f:
+        f.write(f"{proj_end_formatted_time} - Flame closing project {current_project}. Project was open for {duration_string}\n")
