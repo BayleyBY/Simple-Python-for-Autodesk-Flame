@@ -1,5 +1,7 @@
 # Create Marker with Segment Duration
 
+> **Deprecated** — This functionality is now built into Flame and this script is no longer needed.
+
 **Script:** `_BB_create_marker_001.py`  
 **Version:** 1.0 | **Flame:** 2021.1+  
 **Context:** Timeline (right-click on segment)

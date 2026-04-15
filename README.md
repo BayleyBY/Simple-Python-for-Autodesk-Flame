@@ -21,8 +21,8 @@ Copies the source file path of selected clips to the clipboard. Works across Med
 ### [Color Timewarp Shots](color_timewarp_shots/)
 Scans all segments in selected sequences and colors any segment containing a Timewarp timeline effect dark red. Gives a quick visual overview of retimed shots during conform or finishing.
 
-### [Create Marker](create_marker/)
-Creates a clip-level or segment-level marker that spans the exact duration of the selected timeline segment. Two options: a standard clip marker or a segment marker, both sized to match the segment.
+### [Create Marker](create_marker/) *(Deprecated — now a built-in Flame feature)*
+Creates a clip-level or segment-level marker that spans the exact duration of the selected timeline segment. Two options: a standard clip marker or a segment marker, both sized to match the segment. This functionality is now built into Flame and this script is no longer needed.
 
 ### [Create Reel Group](create_reel_group/)
 Creates a standardized Online Assemble reel group inside a selected library, pre-configured with `_Sources Sequence`, `Sources`, and `Conform` reels in the standard colors used for online finishing.
