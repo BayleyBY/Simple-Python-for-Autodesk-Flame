@@ -1,6 +1,6 @@
 # Create Reel Group for Online Assemble
 
-**Script:** `_BB_create_reel_group_002.py`  
+**Script:** `create_reel_group.py`  
 **Version:** 1.0 | **Flame:** 2021.1+  
 **Context:** Media Panel (right-click on Library)
 
