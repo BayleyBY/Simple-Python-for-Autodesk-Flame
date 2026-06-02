@@ -66,6 +66,9 @@ Exports selected clips or batch clip nodes as JPEG sequences, opens them in Samm
 ### [Segment Color to Clip Color](segment_color_to_clip_color/)
 Copies the colour label of the first segment in a clip up to the clip level. Useful in a color grading workflow for seeing at a glance that source clips are connected to their segments in the sequence.
 
+### [Select Connected in Media Panel](select_connected_in_media_panel/)
+Adds a Timeline menu that finds the Media Panel clips connected to the focused segment, expands their reels and selects them — with options to colour the connected clips green for visual tracking and to clear that colour afterwards.
+
 ### [Set In Out](_republic_specific/set_in_out/) *(Workflow-specific — not on Logik)*
 Sets In/Out marks on selected clips for common delivery and approval workflows: Client Posting, Slated Approvals, Slated Delivery, OLV/Social, and Republic Master. Each preset is tuned for the standard sequence layout with slate at `59:53:00` and picture at `1:00:00:00`.
 
