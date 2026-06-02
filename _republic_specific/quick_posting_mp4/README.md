@@ -15,7 +15,7 @@ After export, a shortened version of the destination path is copied to the clipb
 ## What It Does
 
 1. Builds a time-stamped export path: `03_Exports/01_Postings/02_Online/<YY-MM-DD-HHmm>/` where minutes are rounded to the nearest 15-minute increment.
-2. Exports the clip using the `Quick_Posting_MP4.xml` preset (must exist in Flame's shared export presets).
+2. Exports the clip using the `ApprovalPosting_MP4_20Mbits.xml` preset (must exist at the path below).
 3. Navigates MediaHub to the export folder.
 4. Copies a shortened path (everything after the job folder) to the clipboard.
 5. Uses a `post_export_sequence` hook to remux the `.mov` to `.mp4` with ffmpeg (`-codec:v copy`, `-codec:a aac 320k`), then deletes the source `.mov`.
@@ -31,7 +31,7 @@ After export, a shortened version of the destination path is copied to the clipb
 
 - Flame 2022+
 - ffmpeg installed at `/usr/local/bin/ffmpeg`
-- Export preset at `/opt/Autodesk/shared/export/presets/movie_file/Quick_Posting_MP4.xml`
+- Export preset at `/Volumes/Flame_Archive/SHARED/export/presets/movie_file/ApprovalPosting_MP4_20Mbits.xml`
 - PySide6 or PySide2 (bundled with Flame)
 
 ## Related

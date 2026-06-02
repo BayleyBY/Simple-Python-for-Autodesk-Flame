@@ -19,7 +19,7 @@ Requirements:
 - Flame Project Nickname must be the Facilis partition name (e.g. Republic_2023_Q1).
 - Flame Project Name must match the job folder (e.g. R2305590_Client_Project).
 - ffmpeg at /usr/local/bin/ffmpeg.
-- Export preset: /opt/Autodesk/shared/export/presets/movie_file/Quick_Posting_MP4.xml.
+- Export preset: /Volumes/Flame_Archive/SHARED/export/presets/movie_file/ApprovalPosting_MP4_20Mbits.xml.
 """
 
 import datetime
@@ -76,7 +76,7 @@ def export_clips(selection):
 
         clip_output.export(
             clip,
-            "/opt/Autodesk/shared/export/presets/movie_file/Quick_Posting_MP4.xml",
+            "/Volumes/Flame_Archive/SHARED/export/presets/movie_file/ApprovalPosting_MP4_20Mbits.xml",
             _export_path
         )
 
