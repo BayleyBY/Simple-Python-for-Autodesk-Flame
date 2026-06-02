@@ -1,6 +1,6 @@
 # Delete Empty Tracks
 
-**Script:** `_BB_delete_empty_tracks_001.py`  
+**Script:** `delete_empty_tracks.py`  
 **Version:** 1.0 | **Flame:** 2022.1+  
 **Context:** Media Panel (right-click on sequence)
 
