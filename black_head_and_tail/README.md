@@ -1,29 +1,27 @@
 # Black Head and Tail
 
-**Script:** `_BB_black_head_and_tail_001.py`  
-**Version:** 1.5 | **Flame:** 2022.1+  
+**Script:** `black_head_and_tail.py`  
+**Version:** 1.1 | **Flame:** 2027  
 **Context:** Media Panel (right-click on sequence)
 
 ## Description
 
-Adds one second of virtual black to both the head and tail of selected sequences by overwriting a "BLACK" clip from the desktop into the sequence at the correct edit points.
+Adds one second of virtual black to both the head and tail of selected sequences.
 
-- **Head black:** inserted at `59:59:00 – 1:00:00:00`
-- **Tail black:** inserted immediately after the last frame
+The black source is generated automatically — a temporary 1-second black Colour Source is created, used for the edits, and deleted afterward — so nothing needs to be set up on the desktop beforehand. The head black is placed before the first frame and the tail black after the last frame; neither edit ripples or shifts existing content, and each black handle's timeline segment colour is set to black.
 
 ## Prerequisites
 
-- A **Colour Source (Black)** clip named exactly `BLACK` must exist on the desktop with a 1-second duration.
-- Sequences must have the correct **track patching** set before running (Python cannot control patching).
+- Set each sequence's **record patch** to the track you want the black on before running (the patch cannot be controlled from Python).
 
 ## Usage
 
-1. Place a 1-second black Colour Source named `BLACK` on the desktop.
-2. Set track patching on your sequences.
-3. Select one or more sequences in the Media Panel.
-4. Right-click → **Sequence... > Black Heads and Tails**
+1. Select one or more sequences in the Media Panel.
+2. Set track patching on each sequence.
+3. Right-click → **Sequence... > Black Heads and Tails**
 
 ## Notes
 
-- Uses `flame.execute_shortcut("Overwrite Edit")` — the keyboard shortcut for Overwrite Edit must be active.
-- After running, the playhead is moved to the start, the timeline is framed, and focus is set to the top track.
+- Works on a batch of sequences. Each is isolated so one failure can't abort the rest, and a warning dialog lists any sequence whose head or tail was not added (e.g. a sequence with no room before its start). Per-sequence results are also printed to the console.
+- After running, the original selection and active timeline are restored.
+- Uses `flame.execute_shortcut("Overwrite Edit")` — the Overwrite Edit shortcut must be active.
