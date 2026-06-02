@@ -1,7 +1,9 @@
 # Start Project
 
-**Script:** `_BB_start_project_006.py`  
-**Version:** 5.0 | **Flame:** 2024.2.1+  
+> 🔒 **Workflow-specific — not submitted to the Logik Portal.** This script is hard-wired to a specific facility setup (standard reel/library layout and a shared bookmarks template path), so it is kept here under `republic_specific/` rather than shared. It still follows the repo's naming and docstring standards so it can be adapted.
+
+**Script:** `start_project.py`  
+**Version:** 1.0 | **Flame:** 2024.2.1+  
 **Context:** Media Panel (right-click on Workspace)
 
 ## Description

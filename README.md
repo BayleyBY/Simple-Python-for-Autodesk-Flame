@@ -54,7 +54,7 @@ Truncates clip names to either 9 characters (FCB ID format) or 12 characters (AD
 ### [Set In/Out](set_in_out/)
 Sets In/Out marks on selected clips for common delivery and approval workflows: Client Posting, Slated Approvals, Slated Delivery, OLV/Social, and Republic Master. Each preset is tuned for the standard sequence layout with slate at `59:53:00` and picture at `1:00:00:00`.
 
-### [Start Project](start_project/)
+### [Start Project](republic_specific/start_project/) *(Workflow-specific — not on Logik)*
 Full new-project setup in one click. Cleans the desktop and creates standard reels, renames the library to match the project, creates an Online Assemble reel group, and copies standard job folder bookmarks into the project. Individual actions are also available separately.
 
 ### [Surround Sound Mute / Unmute](surround_sound_mute_unmute/)
