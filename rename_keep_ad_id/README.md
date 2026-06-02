@@ -2,8 +2,7 @@
 
 **Script:** `rename_keep_ad_id.py`  
 **Version:** 1.0 | **Flame:** 2020+  
-**Context:** Media Panel (right-click on clip)  
-**Help from:** John Geehreng
+**Context:** Media Panel (right-click on clip)
 
 ## Description
 
