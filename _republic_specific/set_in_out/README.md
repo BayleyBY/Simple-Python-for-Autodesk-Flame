@@ -1,6 +1,6 @@
 # Set In Out
 
-> 🔒 **Workflow-specific — not submitted to the Logik Portal.** The presets hard-code a specific facility's slate/picture timecode layout and delivery workflows (including a "Republic Master" preset), so it is kept here under `republic_specific/` rather than shared. It still follows the repo's naming and docstring standards so it can be adapted.
+> 🔒 **Workflow-specific — not submitted to the Logik Portal.** The presets hard-code a specific facility's slate/picture timecode layout and delivery workflows (including a "Republic Master" preset), so it is kept here under `_republic_specific/` rather than shared. It still follows the repo's naming and docstring standards so it can be adapted.
 
 **Script:** `set_in_out.py`  
 **Version:** 1.0 | **Flame:** 2021.1+  

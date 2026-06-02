@@ -21,7 +21,7 @@ Copies the source file path of selected clips to the clipboard. Works across Med
 ### [Color Timewarp Shots](color_timewarp_shots/)
 Scans all segments in selected sequences and colors any segment containing a Timewarp timeline effect dark red. Gives a quick visual overview of retimed shots during conform or finishing.
 
-### [Create Marker](deprecated/create_marker/) *(Deprecated — now a built-in Flame feature)*
+### [Create Marker](_deprecated/create_marker/) *(Deprecated — now a built-in Flame feature)*
 Creates a clip-level or segment-level marker that spans the exact duration of the selected timeline segment. Two options: a standard clip marker or a segment marker, both sized to match the segment. This functionality is now built into Flame and this script is no longer needed.
 
 ### [Create Reel Group](create_reel_group/)
@@ -30,40 +30,40 @@ Creates a standardized Online Assemble reel group inside a selected library, pre
 ### [Delete Empty Tracks](delete_empty_tracks/)
 Removes all empty video and audio tracks from selected sequences. Handles stereo pairs correctly — a stereo pair is only deleted if both channels are empty.
 
-### [Freeze Frame Mux](deprecated/freeze_frame_mux/) *(Deprecated)*
+### [Freeze Frame Mux](_deprecated/freeze_frame_mux/) *(Deprecated)*
 In Batch, adds a Mux node after the selected node and configures it to freeze on the current playhead frame, with "Repeat First" before and "Repeat Last" after. Automatically connects matte/alpha outputs if present.
 
-### [Merge Offline](deprecated/merge_offline/) *(Deprecated)*
+### [Merge Offline](_deprecated/merge_offline/) *(Deprecated)*
 Automates merging an AAF/XML/EDL sequence with a reference video for online comparison. Stacks the offline edit above the reference, sets primary/secondary tracks, locks the reference, adds virtual padding, and cleans up the reference clip from the Media Panel.
 
 ### [Open PSD in Photoshop](open_psd_in_photoshop/)
 Opens the source PSD file of a soft-imported clip in Photoshop (macOS only). Works from Timeline, Batch, Media Panel, and MediaHub. The context menu only appears when the selected clip is a `.psd` file.
 
-### [Quick Posting MP4](republic_specific/quick_posting_mp4/) *(Workflow-specific — not on Logik)*
+### [Quick Posting MP4](_republic_specific/quick_posting_mp4/) *(Workflow-specific — not on Logik)*
 Exports a selected clip to a time-stamped postings folder and immediately remuxes the output `.mov` to `.mp4` using ffmpeg. Copies a shortened path to the clipboard for sharing via Slack.
 
-### [Ratio Bug Fix](deprecated/ratio_bug_fix/) *(Deprecated)*
+### [Ratio Bug Fix](_deprecated/ratio_bug_fix/) *(Deprecated)*
 Workaround for a Flame bug where segments with an Action timeline effect display the wrong size/ratio after conforming footage at a different resolution. Adds and immediately removes a Source Colour Mgmt effect to force Flame to re-evaluate the source resolution.
 
-### [Remux to MP4](deprecated/remux_to_mp4/) *(Deprecated)*
+### [Remux to MP4](_deprecated/remux_to_mp4/) *(Deprecated)*
 A passive Flame export hook that automatically remuxes any exported `.mov` to `.mp4` using ffmpeg whenever an export preset matching `MP4_H264*` is used. No right-click menu — fires automatically after export.
 
 ### [Rename Keep AD-ID](rename_keep_ad_id/)
 Truncates clip names to either 9 characters (FCB ID format) or 12 characters (AD-ID format) for broadcast TVC delivery. Also includes an option to remove the last 22 characters, useful for stripping suffixes added by Premiere XML fixer tools.
 
-### [Set In Out](republic_specific/set_in_out/) *(Workflow-specific — not on Logik)*
+### [Set In Out](_republic_specific/set_in_out/) *(Workflow-specific — not on Logik)*
 Sets In/Out marks on selected clips for common delivery and approval workflows: Client Posting, Slated Approvals, Slated Delivery, OLV/Social, and Republic Master. Each preset is tuned for the standard sequence layout with slate at `59:53:00` and picture at `1:00:00:00`.
 
-### [Start Project](republic_specific/start_project/) *(Workflow-specific — not on Logik)*
+### [Start Project](_republic_specific/start_project/) *(Workflow-specific — not on Logik)*
 Full new-project setup in one click. Cleans the desktop and creates standard reels, renames the library to match the project, creates an Online Assemble reel group, and copies standard job folder bookmarks into the project. Individual actions are also available separately.
 
 ### [Surround Sound Mute / Unmute](surround_sound_mute_unmute/)
 Mutes or unmutes the first 6 audio tracks (a standard 5.1 surround layout) on all selected clips with a single right-click action.
 
-### [Timesheet](deprecated/timesheet/) *(Deprecated)*
+### [Timesheet](_deprecated/timesheet/) *(Deprecated)*
 Work-in-progress timesheet script. Currently only a `.bak` file — no active version in this repo yet.
 
-### [Update Slate Date](deprecated/update_slate_date/) *(Deprecated)*
+### [Update Slate Date](_deprecated/update_slate_date/) *(Deprecated)*
 Updates all Burn-in Metadata timeline effects in selected sequences to show the current date. Designed for refreshing slate dates before a new round of deliveries.
 
 ## Installation

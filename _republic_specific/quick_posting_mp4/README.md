@@ -1,6 +1,6 @@
 # Quick Posting MP4
 
-> 🔒 **Workflow-specific — not submitted to the Logik Portal.** This script is hard-wired to a specific facility setup (mounted Facilis partition paths, project naming convention, and a named export preset), so it is kept here under `republic_specific/` rather than shared. It still follows the repo's naming and docstring standards so it can be adapted.
+> 🔒 **Workflow-specific — not submitted to the Logik Portal.** This script is hard-wired to a specific facility setup (mounted Facilis partition paths, project naming convention, and a named export preset), so it is kept here under `_republic_specific/` rather than shared. It still follows the repo's naming and docstring standards so it can be adapted.
 
 **Script:** `quick_posting_mp4.py`  
 **Version:** 1.0 | **Flame:** 2024+  
