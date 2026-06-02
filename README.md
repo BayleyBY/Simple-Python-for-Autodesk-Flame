@@ -54,6 +54,9 @@ A passive Flame export hook that automatically remuxes any exported `.mov` to `.
 ### [Rename Keep AD-ID](rename_keep_ad_id/)
 Truncates clip names to either 9 characters (older ISCI ID format) or 12 characters (AD-ID format) for broadcast TVC delivery. Also includes an option to strip the suffix added by Premiere XML fixer tools (removes the last 22 characters).
 
+### [SammieRoto Round Trip](_republic_specific/sammieroto_round_trip/) *(Workflow-specific — not on Logik)*
+Exports selected clips or batch clip nodes as JPEG sequences, opens them in Sammie Roto 2.0 for AI rotoscoping, then imports the result back into the Flame Batch. Hard-wired to a Republic Editorial path layout; edit the CONFIG block before use.
+
 ### [Segment Color to Clip Color](segment_color_to_clip_color/)
 Copies the colour label of the first segment in a clip up to the clip level. Useful in a color grading workflow for seeing at a glance that source clips are connected to their segments in the sequence.
 
