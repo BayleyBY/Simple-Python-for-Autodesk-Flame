@@ -10,7 +10,7 @@ Each script lives in its own folder with a README explaining usage, prerequisite
 Appends the source start frame of a clip to the end of its name, zero-padded to 8 digits. Useful when exporting multiple clips with the same name — the frame number acts as a unique identifier to prevent files from overwriting each other.
 
 ### [Black Head and Tail](black_head_and_tail/)
-Adds one second of virtual black to the head and tail of selected sequences by overwriting a "BLACK" clip from the desktop into the sequence at the correct edit points.
+Adds one second of virtual black to the head and tail of selected sequences. A temporary black source is generated automatically — nothing needs to be set up on the desktop beforehand — and the black handles are added without rippling or shifting existing content.
 
 ### [Cache Motion Vectors](cache_motion_vectors/)
 In Batch, automatically builds the Action/Media node network needed to cache motion vectors for a selected clip node and caches them across the full clip duration.
