@@ -1,7 +1,7 @@
 # Cache Motion Vectors
 
-**Script:** `_BB_cache_motion_vectors_001.py`  
-**Version:** 1.1 | **Flame:** 2021.1+  
+**Script:** `cache_motion_vectors.py`  
+**Version:** 1.0 | **Flame:** 2021.1+  
 **Context:** Batch (right-click on a Clip node)
 
 ## Description
