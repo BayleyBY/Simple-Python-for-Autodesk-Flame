@@ -1,5 +1,7 @@
 # Merge Offline
 
+> ⚠️ **Deprecated** — this script is no longer maintained and is not being submitted to the Logik Portal. It is kept here for reference only.
+
 **Script:** `_BB_merge_offline_008.py`  
 **Version:** 6.0 | **Flame:** 2024+  
 **Context:** Media Panel (right-click on sequence)

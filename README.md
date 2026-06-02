@@ -33,7 +33,7 @@ Removes all empty video and audio tracks from selected sequences. Handles stereo
 ### [Freeze Frame Mux](deprecated/freeze_frame_mux/) *(Deprecated)*
 In Batch, adds a Mux node after the selected node and configures it to freeze on the current playhead frame, with "Repeat First" before and "Repeat Last" after. Automatically connects matte/alpha outputs if present.
 
-### [Merge Offline](merge_offline/)
+### [Merge Offline](deprecated/merge_offline/) *(Deprecated)*
 Automates merging an AAF/XML/EDL sequence with a reference video for online comparison. Stacks the offline edit above the reference, sets primary/secondary tracks, locks the reference, adds virtual padding, and cleans up the reference clip from the Media Panel.
 
 ### [Open PSD in Photoshop](open_photoshop/)
