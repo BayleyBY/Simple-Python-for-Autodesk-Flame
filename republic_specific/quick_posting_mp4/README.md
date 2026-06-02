@@ -1,6 +1,8 @@
 # Quick Posting MP4
 
-**Script:** `_BB_quick_posting_mp4_004.py`  
+> 🔒 **Workflow-specific — not submitted to the Logik Portal.** This script is hard-wired to a specific facility setup (mounted Facilis partition paths, project naming convention, and a named export preset), so it is kept here under `republic_specific/` rather than shared. It still follows the repo's naming and docstring standards so it can be adapted.
+
+**Script:** `quick_posting_mp4.py`  
 **Version:** 1.0 | **Flame:** 2024+  
 **Context:** Media Panel (right-click on clip)
 
@@ -30,7 +32,7 @@ After export, a shortened version of the destination path is copied to the clipb
 - Flame 2022+
 - ffmpeg installed at `/usr/local/bin/ffmpeg`
 - Export preset at `/opt/Autodesk/shared/export/presets/movie_file/Quick_Posting_MP4.xml`
-- PySide2 (bundled with Flame)
+- PySide6 or PySide2 (bundled with Flame)
 
 ## Related
 
