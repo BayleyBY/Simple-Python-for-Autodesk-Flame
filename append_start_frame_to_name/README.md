@@ -1,6 +1,6 @@
 # Append Start Frame to Name
 
-**Script:** `_BB_append_startframe_to_name_001.py`  
+**Script:** `append_start_frame_to_name.py`  
 **Version:** 1.0 | **Flame:** 2023.1+  
 **Context:** Media Panel (right-click on clip)
 

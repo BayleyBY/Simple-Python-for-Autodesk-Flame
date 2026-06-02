@@ -6,7 +6,7 @@ A collection of Python utility scripts for [Autodesk Flame](https://www.autodesk
 
 Each script lives in its own folder with a README explaining usage, prerequisites, and context menu locations.
 
-### [Append Start Frame to Name](append_startframe_to_name/)
+### [Append Start Frame to Name](append_start_frame_to_name/)
 Appends the source start frame of a clip to the end of its name, zero-padded to 8 digits. Useful when exporting multiple clips with the same name — the frame number acts as a unique identifier to prevent files from overwriting each other.
 
 ### [Black Head and Tail](black_head_and_tail/)
