@@ -1,5 +1,7 @@
 # Remux to MP4
 
+> ⚠️ **Deprecated** — this script is no longer maintained and is not being submitted to the Logik Portal. It is kept here for reference only.
+
 **Script:** `_BB_remux_to_mp4_002.py`  
 **Version:** 1.0 | **Flame:** 2024+  
 **Context:** Flame export hook (no right-click menu)  

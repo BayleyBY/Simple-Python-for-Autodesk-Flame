@@ -1,5 +1,7 @@
 # Timesheet
 
+> ⚠️ **Deprecated** — this work-in-progress script is no longer maintained and is not being submitted to the Logik Portal. It is kept here for reference only.
+
 **File:** `_BB_timesheet_008.py.bak`  
 **Status:** Work in progress (backup file — no active `.py` version in this repo)
 

@@ -1,5 +1,7 @@
 # Ratio Bug Fix
 
+> ⚠️ **Deprecated** — this script is no longer maintained and is not being submitted to the Logik Portal. It is kept here for reference only.
+
 **Script:** `_BB_ratio_bug_fix_001.py`  
 **Version:** 1.0 | **Flame:** 2024.2+  
 **Context:** Timeline (right-click on segment)

@@ -1,5 +1,7 @@
 # Update Slate Date
 
+> ⚠️ **Deprecated** — this script is no longer maintained and is not being submitted to the Logik Portal. It is kept here for reference only.
+
 **Script:** `_BB_update_slate_date_005.py`  
 **Version:** 1.5 | **Flame:** 2021+  
 **Context:** Media Panel (right-click on sequence)  

@@ -42,10 +42,10 @@ Opens the source PSD file of a soft-imported clip in Photoshop (macOS only). Wor
 ### [Quick Posting MP4](republic_specific/quick_posting_mp4/) *(Workflow-specific — not on Logik)*
 Exports a selected clip to a time-stamped postings folder and immediately remuxes the output `.mov` to `.mp4` using ffmpeg. Copies a shortened path to the clipboard for sharing via Slack.
 
-### [Ratio Bug Fix](ratio_bug_fix/)
+### [Ratio Bug Fix](deprecated/ratio_bug_fix/) *(Deprecated)*
 Workaround for a Flame bug where segments with an Action timeline effect display the wrong size/ratio after conforming footage at a different resolution. Adds and immediately removes a Source Colour Mgmt effect to force Flame to re-evaluate the source resolution.
 
-### [Remux to MP4](remux_to_mp4/)
+### [Remux to MP4](deprecated/remux_to_mp4/) *(Deprecated)*
 A passive Flame export hook that automatically remuxes any exported `.mov` to `.mp4` using ffmpeg whenever an export preset matching `MP4_H264*` is used. No right-click menu — fires automatically after export.
 
 ### [Rename 9 and 12](rename_9_and_12/)
@@ -60,10 +60,10 @@ Full new-project setup in one click. Cleans the desktop and creates standard ree
 ### [Surround Sound Mute / Unmute](surround_sound_mute_unmute/)
 Mutes or unmutes the first 6 audio tracks (a standard 5.1 surround layout) on all selected clips with a single right-click action.
 
-### [Timesheet](timesheet/)
+### [Timesheet](deprecated/timesheet/) *(Deprecated)*
 Work-in-progress timesheet script. Currently only a `.bak` file — no active version in this repo yet.
 
-### [Update Slate Date](update_slate_date/)
+### [Update Slate Date](deprecated/update_slate_date/) *(Deprecated)*
 Updates all Burn-in Metadata timeline effects in selected sequences to show the current date. Designed for refreshing slate dates before a new round of deliveries.
 
 ## Installation
