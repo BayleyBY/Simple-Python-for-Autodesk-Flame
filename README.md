@@ -49,7 +49,10 @@ Workaround for a Flame bug where segments with an Action timeline effect display
 A passive Flame export hook that automatically remuxes any exported `.mov` to `.mp4` using ffmpeg whenever an export preset matching `MP4_H264*` is used. No right-click menu — fires automatically after export.
 
 ### [Rename Keep AD-ID](rename_keep_ad_id/)
-Truncates clip names to either 9 characters (FCB ID format) or 12 characters (AD-ID format) for broadcast TVC delivery. Also includes an option to remove the last 22 characters, useful for stripping suffixes added by Premiere XML fixer tools.
+Truncates clip names to either 9 characters (older ISCI ID format) or 12 characters (AD-ID format) for broadcast TVC delivery. Also includes an option to strip the suffix added by Premiere XML fixer tools (removes the last 22 characters).
+
+### [Segment Color to Clip Color](segment_color_to_clip_color/)
+Copies the colour label of the first segment in a clip up to the clip level. Useful in a color grading workflow for seeing at a glance that source clips are connected to their segments in the sequence.
 
 ### [Set In Out](_republic_specific/set_in_out/) *(Workflow-specific — not on Logik)*
 Sets In/Out marks on selected clips for common delivery and approval workflows: Client Posting, Slated Approvals, Slated Delivery, OLV/Social, and Republic Master. Each preset is tuned for the standard sequence layout with slate at `59:53:00` and picture at `1:00:00:00`.
