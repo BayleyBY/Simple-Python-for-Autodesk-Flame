@@ -48,7 +48,7 @@ Workaround for a Flame bug where segments with an Action timeline effect display
 ### [Remux to MP4](deprecated/remux_to_mp4/) *(Deprecated)*
 A passive Flame export hook that automatically remuxes any exported `.mov` to `.mp4` using ffmpeg whenever an export preset matching `MP4_H264*` is used. No right-click menu — fires automatically after export.
 
-### [Rename Keep ID](rename_keep_id/)
+### [Rename Keep AD-ID](rename_keep_ad_id/)
 Truncates clip names to either 9 characters (FCB ID format) or 12 characters (AD-ID format) for broadcast TVC delivery. Also includes an option to remove the last 22 characters, useful for stripping suffixes added by Premiere XML fixer tools.
 
 ### [Set In/Out](set_in_out/)

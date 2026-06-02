@@ -1,5 +1,5 @@
 """
-Script Name: Rename Keep ID
+Script Name: Rename Keep AD-ID
 Script Version: 1.0
 Flame Version: 2020
 Written by: Bryan Bayley

@@ -1,6 +1,6 @@
-# Rename Keep ID
+# Rename Keep AD-ID
 
-**Script:** `rename_keep_id.py`  
+**Script:** `rename_keep_ad_id.py`  
 **Version:** 1.0 | **Flame:** 2020+  
 **Context:** Media Panel (right-click on clip)  
 **Help from:** John Geehreng
