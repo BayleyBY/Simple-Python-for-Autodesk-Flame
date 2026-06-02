@@ -1,6 +1,6 @@
 # Rename Keep ID
 
-**Script:** `_BB_rename_9_and_12_001.py`  
+**Script:** `rename_keep_id.py`  
 **Version:** 1.0 | **Flame:** 2020+  
 **Context:** Media Panel (right-click on clip)  
 **Help from:** John Geehreng
