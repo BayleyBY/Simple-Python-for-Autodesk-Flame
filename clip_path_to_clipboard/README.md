@@ -1,7 +1,7 @@
 # Clip Path to Clipboard
 
-**Script:** `_BB_clip_path_to_clipboard_for_slack_001.py`  
-**Version:** 2.0 | **Flame:** 2024+  
+**Script:** `clip_path_to_clipboard.py`  
+**Version:** 1.0 | **Flame:** 2024+  
 **Context:** Media Panel / Timeline / Batch / MediaHub  
 **Original by:** Michael Vaglienty | **Modified by:** Bryan Bayley
 
@@ -26,4 +26,4 @@ The **Copy Short Path** option (MediaHub only) removes the first 4 path componen
 ## Requirements
 
 - Flame 2021+
-- PySide2 (bundled with Flame)
+- PySide6 or PySide2 (bundled with Flame)
