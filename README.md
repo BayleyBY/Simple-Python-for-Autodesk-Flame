@@ -9,6 +9,9 @@ Each script lives in its own folder with a README explaining usage, prerequisite
 ### [AI Clip Tagger](_republic_specific/ai_clip_tagger/) *(Workflow-specific — not on Logik)*
 Tags selected clips with AI-generated scene labels (person, interior, office, etc.) by exporting a still frame from each clip and sending it to the Claude vision API. Tags are applied with Flame's native tag system. Requires an Anthropic API key.
 
+### [Alternating Colors](alternating_colors/)
+Applies an alternating light/dark colour scheme to a group of same-type items (clips, reels, folders, etc.) selected in the Media Panel.
+
 ### [Append Start Frame to Name](append_start_frame_to_name/)
 Appends the source start frame of a clip to the end of its name, zero-padded to 8 digits. Useful when exporting multiple clips with the same name — the frame number acts as a unique identifier to prevent files from overwriting each other.
 
