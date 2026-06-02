@@ -1,7 +1,9 @@
-# Set In/Out Options
+# Set In Out
 
-**Script:** `_BB_set_in_out_005.py`  
-**Version:** 1.5 | **Flame:** 2021.1+  
+> 🔒 **Workflow-specific — not submitted to the Logik Portal.** The presets hard-code a specific facility's slate/picture timecode layout and delivery workflows (including a "Republic Master" preset), so it is kept here under `republic_specific/` rather than shared. It still follows the repo's naming and docstring standards so it can be adapted.
+
+**Script:** `set_in_out.py`  
+**Version:** 1.0 | **Flame:** 2021.1+  
 **Context:** Media Panel (right-click on clip)
 
 ## Description

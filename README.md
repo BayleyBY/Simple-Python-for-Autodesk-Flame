@@ -51,7 +51,7 @@ A passive Flame export hook that automatically remuxes any exported `.mov` to `.
 ### [Rename Keep AD-ID](rename_keep_ad_id/)
 Truncates clip names to either 9 characters (FCB ID format) or 12 characters (AD-ID format) for broadcast TVC delivery. Also includes an option to remove the last 22 characters, useful for stripping suffixes added by Premiere XML fixer tools.
 
-### [Set In/Out](set_in_out/)
+### [Set In Out](republic_specific/set_in_out/) *(Workflow-specific — not on Logik)*
 Sets In/Out marks on selected clips for common delivery and approval workflows: Client Posting, Slated Approvals, Slated Delivery, OLV/Social, and Republic Master. Each preset is tuned for the standard sequence layout with slate at `59:53:00` and picture at `1:00:00:00`.
 
 ### [Start Project](republic_specific/start_project/) *(Workflow-specific — not on Logik)*
