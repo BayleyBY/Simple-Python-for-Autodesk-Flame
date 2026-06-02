@@ -8,17 +8,16 @@
 
 ## Description
 
-Exports selected clips to the job's Postings folder and automatically remuxes the output `.mov` to `.mp4` using ffmpeg. Designed for fast client review postings in an advertising/broadcast finishing environment.
+Exports selected clips straight to `.mp4` (via the posting preset) into the job's Postings folder. Designed for fast client review postings in an advertising/broadcast finishing environment.
 
 After export, a shortened version of the destination path is copied to the clipboard for easy sharing via Slack.
 
 ## What It Does
 
 1. Builds a time-stamped export path: `03_Exports/01_Postings/02_Online/<YY-MM-DD-HHmm>/` where minutes are rounded to the nearest 15-minute increment.
-2. Exports the clip using the `ApprovalPosting_MP4_20Mbits.xml` preset (must exist at the path below).
+2. Exports the clip using the `ApprovalPosting_MP4_20Mbits.xml` preset (must exist at the path below) — this preset writes `.mp4` directly.
 3. Navigates MediaHub to the export folder.
 4. Copies a shortened path (everything after the job folder) to the clipboard.
-5. Uses a `post_export_sequence` hook to remux the `.mov` to `.mp4` with ffmpeg (`-codec:v copy`, `-codec:a aac 320k`), then deletes the source `.mov`.
 
 ## Path Assumptions
 
@@ -29,11 +28,6 @@ After export, a shortened version of the destination path is copied to the clipb
 
 ## Requirements
 
-- Flame 2022+
-- ffmpeg installed at `/usr/local/bin/ffmpeg`
+- Flame 2022+ (Flame must be able to export `.mp4` directly)
 - Export preset at `/Volumes/Flame_Archive/SHARED/export/presets/movie_file/ApprovalPosting_MP4_20Mbits.xml`
 - PySide6 or PySide2 (bundled with Flame)
-
-## Related
-
-See also `remux_to_mp4` for a general-purpose remux hook that triggers on any export preset matching `MP4_H264*`.

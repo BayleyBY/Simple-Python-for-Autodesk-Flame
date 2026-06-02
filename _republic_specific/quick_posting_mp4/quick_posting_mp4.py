@@ -7,8 +7,8 @@ Creation Date: 05.05.23
 
 Description:
 Export selected clips to the job folder / Postings folder. Creates a new dated
-folder, rounding the minutes to the nearest 15-minute increment. After export,
-remuxes the .mov to .mp4 using ffmpeg and copies a shortened path to the
+folder, rounding the minutes to the nearest 15-minute increment, exports each
+clip to MP4 with the posting preset, and copies a shortened path to the
 clipboard for Slack sharing.
 
 Menus:
@@ -18,13 +18,11 @@ Requirements:
 - Facilis partitions must be mounted at /Volumes.
 - Flame Project Nickname must be the Facilis partition name (e.g. Republic_2023_Q1).
 - Flame Project Name must match the job folder (e.g. R2305590_Client_Project).
-- ffmpeg at /usr/local/bin/ffmpeg.
 - Export preset: /Volumes/Flame_Archive/SHARED/export/presets/movie_file/ApprovalPosting_MP4_20Mbits.xml.
 """
 
 import datetime
 import os
-import subprocess
 import flame
 
 try:
@@ -32,13 +30,8 @@ try:
 except ImportError:
     from PySide2 import QtWidgets
 
-# Shared state between export_clips and the post_export_sequence hook.
-_export_path = None
-_export_filename = None
-
 
 def export_clips(selection):
-    global _export_path, _export_filename
 
     def resolve_path(clip, template):
         date = datetime.datetime.now()
@@ -68,23 +61,22 @@ def export_clips(selection):
     clip_output.export_between_marks = True
 
     for clip in selection:
-        _export_path = resolve_path(clip, template)
-        _export_filename = str(clip.name)[1:-1] + ".mov"
+        export_path = resolve_path(clip, template)
 
-        if not os.path.isdir(_export_path):
-            os.makedirs(_export_path)
+        if not os.path.isdir(export_path):
+            os.makedirs(export_path, exist_ok=True)
 
         clip_output.export(
             clip,
             "/Volumes/Flame_Archive/SHARED/export/presets/movie_file/ApprovalPosting_MP4_20Mbits.xml",
-            _export_path
+            export_path
         )
 
         flame.go_to("MediaHub")
-        flame.mediahub.files.set_path(_export_path)
+        flame.mediahub.files.set_path(export_path)
 
         # Build shortened path for Slack (strip /Volumes/<mount>/<job>/)
-        folders = _export_path.split("/")
+        folders = export_path.split("/")
         slack_path = "/".join(folders[4:]).rstrip("/")
         QtWidgets.QApplication.instance().clipboard().setText(slack_path)
 
@@ -110,28 +102,3 @@ def get_media_panel_custom_ui_actions():
             ]
         }
     ]
-
-
-def post_export_sequence(info, userData, *args, **kwargs):
-    global _export_path, _export_filename
-
-    if _export_path is None or _export_filename is None:
-        return
-
-    remux_source = os.path.join(_export_path, _export_filename)
-    remux_dest = os.path.join(_export_path, os.path.splitext(_export_filename)[0] + ".mp4")
-
-    ffmpeg_cmd = [
-        "/usr/local/bin/ffmpeg", "-y", "-i", remux_source,
-        "-codec:v", "copy", "-codec:a", "aac", "-ab", "320k", remux_dest
-    ]
-    subprocess.run(ffmpeg_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, stdin=subprocess.DEVNULL)
-
-    if os.path.isfile(remux_dest) and os.path.getsize(remux_dest) > 0:
-        os.remove(remux_source)
-        print("======= MP4 created successfully and MOV was deleted. =======")
-    else:
-        print("======= MP4 REMUX DID NOT COMPLETE =======")
-
-    _export_path = None
-    _export_filename = None
