@@ -30,7 +30,7 @@ Creates a standardized Online Assemble reel group inside a selected library, pre
 ### [Delete Empty Tracks](delete_empty_tracks/)
 Removes all empty video and audio tracks from selected sequences. Handles stereo pairs correctly — a stereo pair is only deleted if both channels are empty.
 
-### [Freeze Frame Mux](freeze_frame_mux/)
+### [Freeze Frame Mux](deprecated/freeze_frame_mux/) *(Deprecated)*
 In Batch, adds a Mux node after the selected node and configures it to freeze on the current playhead frame, with "Repeat First" before and "Repeat Last" after. Automatically connects matte/alpha outputs if present.
 
 ### [Merge Offline](merge_offline/)

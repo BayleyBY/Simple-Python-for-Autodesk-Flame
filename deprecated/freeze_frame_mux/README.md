@@ -1,5 +1,7 @@
 # Freeze Frame Mux
 
+> ⚠️ **Deprecated** — this script is no longer maintained and is not being submitted to the Logik Portal. It is kept here for reference only.
+
 **Script:** `_BB_freeze_frame_mux_001.py`  
 **Version:** 1.0 | **Flame:** 2021.1+  
 **Context:** Batch (right-click on any node)
