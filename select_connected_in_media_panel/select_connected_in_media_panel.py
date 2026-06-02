@@ -65,7 +65,7 @@ def select_and_color_connected_in_media_panel(selection):
             clip.parent.expanded = True
         flame.media_panel.selected_entries = clips
         for clip in clips:
-            clip.colour = (0.0, 1.0, 0.0)
+            clip.colour = (29, 67, 45)
 
 
 def clear_color_connected_in_media_panel(selection):
