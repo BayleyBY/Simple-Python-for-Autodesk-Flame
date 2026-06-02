@@ -36,7 +36,7 @@ In Batch, adds a Mux node after the selected node and configures it to freeze on
 ### [Merge Offline](deprecated/merge_offline/) *(Deprecated)*
 Automates merging an AAF/XML/EDL sequence with a reference video for online comparison. Stacks the offline edit above the reference, sets primary/secondary tracks, locks the reference, adds virtual padding, and cleans up the reference clip from the Media Panel.
 
-### [Open PSD in Photoshop](open_photoshop/)
+### [Open PSD in Photoshop](open_psd_in_photoshop/)
 Opens the source PSD file of a soft-imported clip in Photoshop (macOS only). Works from Timeline, Batch, Media Panel, and MediaHub. The context menu only appears when the selected clip is a `.psd` file.
 
 ### [Quick Posting MP4](quick_posting_mp4/)
