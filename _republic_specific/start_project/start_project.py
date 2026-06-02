@@ -79,7 +79,7 @@ def create_reel_group(selection):
 
 
 def create_bookmarks(selection):
-    project_name = str(flame.project.current_project.name)[1:-1]
+    project_name = str(flame.project.current_project.name)
     template_file = "/Volumes/Flame_Archive/_discreet/_bookmarks_standard_project/cf_bookmarks.xml"
     destination_dir = f"/opt/Autodesk/project/{project_name}/status"
 

@@ -56,8 +56,8 @@ def get_dated_export_path():
     date += datetime.timedelta(seconds=approx * 60)
 
     path = "/Volumes/<ProjectNickName>/<ProjectName>/03_Exports/01_Postings/02_Online/<YY>-<MM>-<DD>-<Hour><Minute>/"
-    path = path.replace("<ProjectName>", str(flame.project.current_project.name)[1:-1])
-    path = path.replace("<ProjectNickName>", str(flame.project.current_project.nickname)[1:-1])
+    path = path.replace("<ProjectName>", str(flame.project.current_project.name))
+    path = path.replace("<ProjectNickName>", str(flame.project.current_project.nickname))
     path = path.replace("<YY>", date.strftime("%y"))
     path = path.replace("<MM>", date.strftime("%m"))
     path = path.replace("<DD>", date.strftime("%d"))

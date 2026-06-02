@@ -46,8 +46,8 @@ def export_clips(selection):
         date = date.replace(minute=0) + datetime.timedelta(seconds=approx * 60)
         time_part = date.time()
         path = template
-        path = path.replace("<ProjectName>", str(flame.project.current_project.name)[1:-1])
-        path = path.replace("<ProjectNickName>", str(flame.project.current_project.nickname)[1:-1])
+        path = path.replace("<ProjectName>", str(flame.project.current_project.name))
+        path = path.replace("<ProjectNickName>", str(flame.project.current_project.nickname))
         path = path.replace("<YYYY>", date.strftime("%Y"))
         path = path.replace("<YY>", date.strftime("%y"))
         path = path.replace("<MM>", date.strftime("%m"))

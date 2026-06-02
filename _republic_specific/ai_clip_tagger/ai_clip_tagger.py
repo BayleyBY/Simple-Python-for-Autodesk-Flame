@@ -70,8 +70,8 @@ def get_api_key():
 
 def get_poster_frames_dir():
     path = "/Volumes/<ProjectNickName>/<ProjectName>/02_Projects/09_Flame/_poster_frames"
-    path = path.replace("<ProjectName>", str(flame.project.current_project.name)[1:-1])
-    path = path.replace("<ProjectNickName>", str(flame.project.current_project.nickname)[1:-1])
+    path = path.replace("<ProjectName>", str(flame.project.current_project.name))
+    path = path.replace("<ProjectNickName>", str(flame.project.current_project.nickname))
     return path
 
 

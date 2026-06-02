@@ -81,8 +81,8 @@ def get_current_project_info():
         current_project = flame.project.current_project
 
         # Retrieve names as plain strings (no sanitization)
-        project_name = str(current_project.name)[1:-1]
-        nickname = str(current_project.nickname)[1:-1]
+        project_name = str(current_project.name)
+        nickname = str(current_project.nickname)
 
         log(f"Project Info: Name='{project_name}', Nickname='{nickname}'")
         return project_name, nickname
