@@ -1,6 +1,6 @@
 # Color Timewarp Shots
 
-**Script:** `_BB_color_timewarp_shots_001.py`  
+**Script:** `color_timewarp_shots.py`  
 **Version:** 1.0 | **Flame:** 2021.1+  
 **Context:** Media Panel (right-click on sequence)
 
