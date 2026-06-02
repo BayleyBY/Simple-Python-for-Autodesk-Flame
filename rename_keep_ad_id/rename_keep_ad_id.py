@@ -3,18 +3,20 @@ Script Name: Rename Keep AD-ID
 Script Version: 1.0
 Flame Version: 2020
 Written by: Bryan Bayley
-Help from: John Geehreng
 Creation Date: 08.12.21
 
 Description:
-Truncate clip names in the Media Panel to 9 characters (FCB ID format), 12
+Truncate clip names in the Media Panel to 9 characters (Older ISCI ID format), 12
 characters (AD-ID format), or remove the last 22 characters (to strip suffixes
 added by Premiere XML fixer tools).
 
+This is useful if your flame sequences are named with the ID + title, 
+descriptions, etc. and you need to export files with just the ID for the filename.
+
 Menus:
-Right-click a clip in the Media Panel -> Rename... -> Keep 9 (FCB ID)
+Right-click a clip in the Media Panel -> Rename... -> Keep 9 (ISCI ID)
 Right-click a clip in the Media Panel -> Rename... -> Keep 12 (AD-ID)
-Right-click a clip in the Media Panel -> Rename... -> Remove Last 22
+Right-click a clip in the Media Panel -> Rename... -> Remove Premiere XML Suffix
 """
 
 import flame
@@ -48,7 +50,7 @@ def get_media_panel_custom_ui_actions():
             "name": "Rename...",
             "actions": [
                 {
-                    "name": "Keep 9 (FCB ID)",
+                    "name": "Keep 9 (ISCI ID)",
                     "isVisible": scope_clip,
                     "execute": keep_9,
                     "minimumVersion": "2020"
@@ -60,7 +62,7 @@ def get_media_panel_custom_ui_actions():
                     "minimumVersion": "2020"
                 },
                 {
-                    "name": "Remove Last 22",
+                    "name": "Remove Premiere XML Suffix",
                     "isVisible": scope_clip,
                     "execute": remove_22,
                     "minimumVersion": "2020"
