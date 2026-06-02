@@ -72,6 +72,9 @@ Mutes or unmutes the first 6 audio tracks (a standard 5.1 surround layout) on al
 ### [Timesheet](_deprecated/timesheet/) *(Deprecated)*
 Work-in-progress timesheet script. Currently only a `.bak` file — no active version in this repo yet.
 
+### [TVC Timecode Checker](bb_tvc_timecode_checker/)
+Checks selected clips or sequences for broadcast TVC delivery: whether the record timecode starts at `01:00:00:00` and whether the duration is a standard commercial length (6s, 15s, 30s, 60s, 90s).
+
 ### [Update Slate Date](_deprecated/update_slate_date/) *(Deprecated)*
 Updates all Burn-in Metadata timeline effects in selected sequences to show the current date. Designed for refreshing slate dates before a new round of deliveries.
 
