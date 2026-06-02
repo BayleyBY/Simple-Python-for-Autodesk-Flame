@@ -45,6 +45,9 @@ Automates merging an AAF/XML/EDL sequence with a reference video for online comp
 ### [Open PSD in Photoshop](open_psd_in_photoshop/)
 Opens the source PSD file of a soft-imported clip in Photoshop (macOS only). Works from Timeline, Batch, Media Panel, and MediaHub. The context menu only appears when the selected clip is a `.psd` file.
 
+### [Quick Posting Aspect Ratios](_republic_specific/quick_posting_aspect_ratios/) *(Workflow-specific — not on Logik)*
+Exports selected clips to social aspect ratios (1x1, 9x16, 4x5), picking the export preset from each clip name's trailing suffix. Exports to the same dated postings folder as Quick Posting MP4, then copies a shortened path and opens Finder there.
+
 ### [Quick Posting MP4](_republic_specific/quick_posting_mp4/) *(Workflow-specific — not on Logik)*
 Exports a selected clip to a time-stamped postings folder and immediately remuxes the output `.mov` to `.mp4` using ffmpeg. Copies a shortened path to the clipboard for sharing via Slack.
 
