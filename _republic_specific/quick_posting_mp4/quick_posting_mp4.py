@@ -8,8 +8,8 @@ Creation Date: 05.05.23
 Description:
 Export selected clips to the job folder / Postings folder. Creates a new dated
 folder, rounding the minutes to the nearest 15-minute increment, exports each
-clip to MP4 with the posting preset, and copies a shortened path to the
-clipboard for Slack sharing.
+clip to MP4 with the posting preset, copies a shortened path to the clipboard
+for Slack sharing, and opens a Finder window at the export folder.
 
 Menus:
 Right-click a clip in the Media Panel -> Export... -> Quick Posting MP4
@@ -79,6 +79,13 @@ def export_clips(selection):
         folders = export_path.split("/")
         slack_path = "/".join(folders[4:]).rstrip("/")
         QtWidgets.QApplication.instance().clipboard().setText(slack_path)
+
+    # Open a Finder window at the export folder.
+    # shell=True is required so the shell interprets the quotes around the path;
+    # without it, execute_command passes the string to exec directly and the
+    # quote characters become part of the path argument.
+    if selection:
+        flame.execute_command(f'/usr/bin/open "{export_path}"', shell=True)
 
 
 def scope_clip(selection):

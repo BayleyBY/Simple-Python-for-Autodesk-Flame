@@ -18,6 +18,7 @@ After export, a shortened version of the destination path is copied to the clipb
 2. Exports the clip using the `ApprovalPosting_MP4_20Mbits.xml` preset (must exist at the path below) — this preset writes `.mp4` directly.
 3. Navigates MediaHub to the export folder.
 4. Copies a shortened path (everything after the job folder) to the clipboard.
+5. Opens a Finder window at the export folder.
 
 ## Path Assumptions
 
