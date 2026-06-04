@@ -1,42 +1,40 @@
 # import_open_clip.py — working notes
 
-Notes on **this repo's** copy of *Import Write Node* (Michael Vaglienty, GPL-3.0).
-Base: Logik Portal snapshot `26-03-03`, v2.11.0. This copy is a **stripped fork**
-that keeps only the **Import Open Clip to Batch** action and adds Flame 2027
-token handling. Original full script lives at
+Origin: a stripped fork of *Import Write Node* (Michael Vaglienty), Logik Portal
+snapshot `26-03-03`, v2.11.0 — kept only the **Import Open Clip to Batch** action
+and added Flame 2027 token handling. The original full script lives at
 `/Volumes/Flame_Archive/_python/_LOGIK/LogikPortal_Snapshot_26-03-03/python-main/import_write_node/`.
+
+This copy is now a **single self-contained `.py` file** — the PyFlame library and
+`config/` dependencies have been inlined/removed (see "Self-contained rewrite").
 
 ## Deploy
 
-Must be deployed as a **folder** (it does `from lib.pyflame_lib_import_open_clip import *`):
+Single file — copy `import_open_clip.py` into Flame's Python path and rescan
+Python hooks (or restart). No `lib/` or `config/` folder needed. Syntax check
+first: `python3 -c "import ast; ast.parse(open('import_open_clip.py').read())"`.
 
-```
-/Volumes/Flame_Archive/SHARED/python/import_open_clip/
-├── import_open_clip.py            ← this copy (edited)
-├── config/config.json
-├── lib/pyflame_lib_import_open_clip.py
-└── lib/CHANGELOG.md, lib/README.md
-```
+## Self-contained rewrite
 
-Deploy = copy the folder into Flame's Python path, `rm -rf` any `__pycache__`
-(both top-level and `lib/`), then rescan Python hooks in Flame (or restart for a
-fully clean reload). Syntax check first:
-`python3 -c "import ast; ast.parse(open('import_open_clip.py').read())"`.
+The script originally did `from lib.pyflame_lib_import_open_clip import *` and read
+`config/config.json`. Both dependencies were removed:
 
-## What this fork keeps / removed
+| was (PyFlame) | now |
+|---------------|-----|
+| `pyflame.print_title` / `pyflame.print` | plain `print()` |
+| `pyflame.verify_script_install` | dropped (only relevant to multi-file installs) |
+| `PyFlameConfig` + `config/config.json` | `SCHEMATIC_REEL` module constant |
+| `PyFlameMessageWindow` / `MessageType` | `message_box()` via QtWidgets (PySide6→PySide2) |
 
-**Live call path:** `get_batch_custom_ui_actions` → `schematic_import` →
-`ImportWriteNode.__init__` → `load_config` → `import_to_schematic_reel` →
-`translate_write_node_path` (+ `resolve_path_tokens`/`apply_token_slice`) →
-`create_schematic_reel` → `import_schematic_reel`. `scope_write_node` = visibility.
+The `ImportWriteNode` class was flattened to module-level functions:
+`get_batch_custom_ui_actions` → `import_open_clip` → `translate_write_node_path`
+(+ `resolve_path_tokens`/`apply_token_slice`) → `create_schematic_reel` →
+`flame.batch.import_clip`. `scope_write_node` = visibility.
 
-**Removed** (unused by that action): `setup()` UI + `get_main_menu_custom_ui_actions`;
-the Renders Reel action (`shelf_import`, `import_to_shelf_reel`,
-`create_shelf_reel`, `import_shelf_reel`); post-render auto-import
-(`post_render_import` + `batch_export_end`); all config keys except
-`schematic_reel`. ~593 → ~292 lines. The shared `lib/` is untouched (still
-supplies `pyflame`, `PyFlameConfig`, `PyFlameMessageWindow`, `MessageType`,
-`TextColor`).
+The earlier fork also **removed** (unused by this action): `setup()` UI +
+`get_main_menu_custom_ui_actions`; the Renders Reel action; post-render
+auto-import (`post_render_import` + `batch_export_end`); all config keys except
+`schematic_reel`.
 
 ## Bugs fixed (in order found)
 

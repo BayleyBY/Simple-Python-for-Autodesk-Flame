@@ -40,7 +40,7 @@ Removes all empty video and audio tracks from selected sequences. Handles stereo
 In Batch, adds a Mux node after the selected node and configures it to freeze on the current playhead frame, with "Repeat First" before and "Repeat Last" after. Automatically connects matte/alpha outputs if present.
 
 ### [Import Open Clip](import_open_clip/)
-Imports the open clip created by a selected Write File node into a Batch schematic reel. Resolves the write node's path tokens (including Flame 2027 token-slicing) and the node's own versioning. Multi-file script built on Michael Vaglienty's PyFlame library.
+Imports the open clip created by a selected Write File node into a Batch schematic reel. Resolves the write node's path tokens (including Flame 2027 token-slicing) and the node's own versioning. Single self-contained script, originally based on Michael Vaglienty's Import Write Node.
 
 ### [Merge Offline](_deprecated/merge_offline/) *(Deprecated)*
 Automates merging an AAF/XML/EDL sequence with a reference video for online comparison. Stacks the offline edit above the reference, sets primary/secondary tracks, locks the reference, adds virtual padding, and cleans up the reference clip from the Media Panel.
