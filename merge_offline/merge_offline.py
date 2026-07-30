@@ -4,11 +4,11 @@ Script Version: 1.0
 Flame Version: 2027
 Written by: Bryan Bayley
 Help from: Fred Warren
-Creation Date: 07.29.23
+Creation Date: 07.29.26
 
 Description:
 Automates merging an offline edit (AAF/XML/EDL) with a reference video for
-online comparison. Stacks the offline edit above the reference, sets
+online comparison. Stacks the AAF/XML/EDL edit above the reference, sets
 primary/secondary tracks for A/B comparison, locks the reference video and
 audio, adds virtual padding and a black top track, and deletes the
 standalone reference clip from the Media Panel. Padding and the black
