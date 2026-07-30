@@ -43,7 +43,7 @@ In Batch, adds a Mux node after the selected node and configures it to freeze on
 Imports the open clip created by a selected Write File node into a Batch schematic reel. Resolves the write node's path tokens (including Flame 2027 token-slicing) and the node's own versioning. Single self-contained script, originally based on Michael Vaglienty's Import Write Node.
 
 ### [Merge Offline](merge_offline/)
-Automates merging an AAF/XML/EDL sequence with a reference video (named `<sequence_name>_OFFLINE`) for online comparison. Stacks the offline edit above the reference, sets primary/secondary tracks, locks the reference, adds virtual padding, and cleans up the reference clip from the Media Panel.
+Automates merging an AAF/XML/EDL sequence with a reference video (found on the same reel by an `offline`/`ref` keyword or fuzzy name match) for online comparison. Stacks the offline edit above the reference, sets primary/secondary tracks, locks the reference, adds virtual padding, and cleans up the reference clip from the Media Panel.
 
 ### [Open PSD in Photoshop](open_psd_in_photoshop/)
 Opens the source PSD file of a soft-imported clip in Photoshop (macOS only). Works from Timeline, Batch, Media Panel, and MediaHub. The context menu only appears when the selected clip is a `.psd` file.

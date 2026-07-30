@@ -10,7 +10,10 @@ Automates merging an offline edit (AAF/XML/EDL) with a reference video into a si
 
 ## What It Does
 
-1. Finds the matching reference clip (same name as the sequence + `_OFFLINE`). If it isn't found, the sequence is skipped untouched.
+1. Finds the reference clip on the same reel as the sequence using a layered lookup:
+   - Any clip whose name contains `offline`, `reference`, or the word `ref` (case-insensitive). If several match, the one named most like the sequence wins.
+   - Otherwise, the clip whose name is most similar to the sequence name (fuzzy match — e.g. `JOB123_ONLINE` finds `JOB123_v12`).
+   - If neither layer finds a plausible reference, the sequence is skipped untouched. All skipped sequences are listed in a single dialog after everything else has merged.
 2. Opens the selected sequence.
 3. Moves all existing tracks up two layers (via `Nudge 1 Track Up` shortcut), leaving a blank top track.
 4. Adds a stereo audio track for the reference audio.
@@ -21,12 +24,12 @@ Automates merging an offline edit (AAF/XML/EDL) with a reference video into a si
 9. Adds virtual padding: head `59:59:00`, tail `+25 frames`.
 10. Sets the top track gap to black and cuts it to picture-only range.
 11. Moves the playhead to the start and frames the timeline.
-12. Deletes the standalone `_OFFLINE` clip from the Media Panel.
+12. Deletes the standalone reference clip from the Media Panel.
 
 ## Prerequisites
 
 - Import the AAF/XML/EDL to a sequence reel.
-- Import the reference video to the **same** sequence reel and name it `<sequence_name>_OFFLINE`.
+- Import the reference video to the **same** sequence reel. Naming it with `offline`, `ref`, or `reference` in the name (e.g. `<sequence_name>_OFFLINE`) guarantees it is found; otherwise its name must closely resemble the sequence name.
 - The reference video must share the same start frame as the AAF/XML/EDL (no 2-pop offset).
 - The default keyboard shortcut entries used by the script must still exist in the Keyboard Shortcut editor (even if unassigned to a key): `Nudge 1 Track Up`, `Nudge 1 Track Down`, `Overwrite Edit`, `Timeline Home`, `Set Focus on Topmost Visible Track`.
 

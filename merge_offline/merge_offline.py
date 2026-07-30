@@ -13,12 +13,21 @@ primary/secondary tracks for A/B comparison, locks the reference video and
 audio, adds virtual padding and a black top track, and deletes the
 standalone reference clip from the Media Panel.
 
+The reference clip is found on the same reel as the selected sequence using
+a layered lookup:
+1. Any clip whose name contains "offline", "reference" or the word "ref"
+   (case-insensitive). If several match, the one named most like the
+   sequence wins.
+2. Otherwise, the clip whose name is most similar to the sequence name
+   (fuzzy match, e.g. "JOB123_ONLINE" finds "JOB123_v12").
+Sequences with no plausible reference are left untouched and listed in a
+single dialog after everything else has merged.
+
 Prerequisites:
 - Import the AAF/XML/EDL to a sequence reel.
-- Import the reference video to the same sequence reel, named
-  <sequence_name>_OFFLINE, with the same start frame as the offline edit
-  (e.g. don't have the offline edit start on the first frame of picture
-  while the reference video has a 2-pop).
+- Import the reference video to the same reel, with the same start frame as
+  the offline edit (e.g. don't have the offline edit start on the first
+  frame of picture while the reference video has a 2-pop).
 - This script uses flame.execute_shortcut(). The shortcuts used must still
   exist in the Keyboard Shortcut editor (they do by default): Nudge 1 Track
   Up, Nudge 1 Track Down, Overwrite Edit, Timeline Home, Set Focus on
@@ -28,7 +37,28 @@ Menus:
 Right-click a sequence in the Media Panel -> Sequence... -> Merge Offline
 """
 
+import re
+from difflib import SequenceMatcher
+
 import flame
+
+try:
+    from PySide6 import QtWidgets
+except ImportError:
+    from PySide2 import QtWidgets
+
+SCRIPT_NAME = "Merge Offline"
+
+# Minimum similarity (0-1) between the sequence name and a clip name for the
+# fuzzy fallback to accept the clip as the reference.
+FUZZY_MATCH_THRESHOLD = 0.6
+
+
+def message_box(message):
+    msg = QtWidgets.QMessageBox()
+    msg.setWindowTitle(SCRIPT_NAME)
+    msg.setText(message)
+    msg.exec_()
 
 
 def scope_clip(selection):
@@ -38,16 +68,57 @@ def scope_clip(selection):
     return False
 
 
+def name_similarity(name_a, name_b):
+    return SequenceMatcher(None, name_a.lower(), name_b.lower()).ratio()
+
+
+def is_reference_name(name):
+    lowered = name.lower()
+    if "offline" in lowered or "reference" in lowered:
+        return True
+    # Bare "ref" only counts as its own word, so names like "preflight" or
+    # "refresh" don't false-match.
+    return re.search(r"(^|[^a-z])ref([^a-z]|$)", lowered) is not None
+
+
+def find_reference(clip, selected_names):
+    """Layered lookup for the reference clip on the sequence's reel."""
+    clip_name = str(clip.name)[1:-1]
+
+    # Only plain clips on the same reel are candidates - sequences (including
+    # other selected ones) can never be picked as a reference.
+    candidates = []
+    for item in getattr(clip.parent, "clips", []):
+        item_name = str(item.name)[1:-1]
+        if item_name != clip_name and item_name not in selected_names:
+            candidates.append(item)
+
+    keyword_matches = [item for item in candidates if is_reference_name(str(item.name)[1:-1])]
+    if keyword_matches:
+        return max(keyword_matches, key=lambda item: name_similarity(clip_name, str(item.name)[1:-1]))
+
+    best = None
+    best_score = FUZZY_MATCH_THRESHOLD
+    for item in candidates:
+        score = name_similarity(clip_name, str(item.name)[1:-1])
+        if score >= best_score:
+            best = item
+            best_score = score
+    return best
+
+
 def merge_offline(selection):
+    selected_names = [str(item.name)[1:-1] for item in selection]
+    skipped = []
+
     for clip in selection:
+        clip_name = str(clip.name)[1:-1]
+
         # Find the reference clip before touching the sequence so a missing
         # reference leaves the sequence untouched.
-        clip_name = str(clip.name)[1:-1]
-        ref = None
-        for item in flame.find_by_name(clip_name + "_OFFLINE"):
-            ref = item
+        ref = find_reference(clip, selected_names)
         if ref is None:
-            print("Merge Offline: no clip named '%s_OFFLINE' found - skipping '%s'" % (clip_name, clip_name))
+            skipped.append(clip_name)
             continue
 
         # Make sure the clip is open as a sequence
@@ -109,6 +180,13 @@ def merge_offline(selection):
         # Delete the standalone reference clip
         flame.media_panel.selected_entries = [clip]
         flame.delete(ref)
+
+    if skipped:
+        message_box(
+            "No reference clip was found for:\n\n"
+            + "\n".join(skipped)
+            + "\n\nThese sequences were not merged."
+        )
 
 
 def get_media_panel_custom_ui_actions():
