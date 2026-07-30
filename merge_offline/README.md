@@ -15,13 +15,13 @@ Automates merging an offline edit (AAF/XML/EDL) with a reference video into a si
    - Otherwise, the clip whose name is most similar to the sequence name (fuzzy match — e.g. `JOB123_ONLINE` finds `JOB123_v12`).
    - If neither layer finds a plausible reference, the sequence is skipped untouched. All skipped sequences are listed in a single dialog after everything else has merged.
 2. Opens the selected sequence.
-3. Moves all existing tracks up two layers (via `Nudge 1 Track Up` shortcut), leaving a blank top track.
+3. Moves all existing tracks up two layers (via `Nudge 1 Track Up` shortcut), leaving a blank top track. If the nudge has no effect (seen on a 60 fps sequence), the sequence is skipped safely before anything is modified further.
 4. Adds a stereo audio track for the reference audio.
 5. Overwrites the reference onto the bottom track and audio track.
 6. Sets primary track (top) and secondary track (bottom) for A/B comparison.
 7. Locks the reference video and audio tracks.
 8. Clears in/out marks.
-9. Adds virtual padding: head `59:59:00`, tail `+25 frames`.
+9. Adds one second of virtual padding to head and tail, derived from the sequence's own frame rate and start timecode (any rate and start TC work — nothing is hardcoded).
 10. Sets the top track gap to black and cuts it to picture-only range.
 11. Moves the playhead to the start and frames the timeline.
 12. Deletes the standalone reference clip from the Media Panel.
