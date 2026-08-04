@@ -15,6 +15,9 @@ Applies an alternating light/dark colour scheme to a group of same-type items (c
 ### [Append Start Frame to Name](append_start_frame_to_name/)
 Appends the source start frame of a clip to the end of its name, zero-padded to 8 digits. Useful when exporting multiple clips with the same name — the frame number acts as a unique identifier to prevent files from overwriting each other.
 
+### [BB TVC Timecode Checker](bb_tvc_timecode_checker/)
+Checks selected clips or sequences for broadcast TVC delivery: whether the record timecode starts at `01:00:00:00` — or at a recognized black head/tail (`59:59:00`) or slate (`59:50:00` / `59:53:00`) lead-in — and whether the duration is a standard commercial length (6s, 15s, 30s, 60s, 90s) once the lead-in is accounted for. Assumed layouts are flagged for visual confirmation.
+
 ### [Black Head and Tail](black_head_and_tail/)
 Adds one second of virtual black to the head and tail of selected sequences. A temporary black source is generated automatically — nothing needs to be set up on the desktop beforehand — and the black handles are added without rippling or shifting existing content.
 
@@ -83,9 +86,6 @@ Mutes or unmutes the first 6 audio tracks (a standard 5.1 surround layout) on al
 
 ### [Timesheet](_deprecated/timesheet/) *(Deprecated)*
 Work-in-progress timesheet script. Currently only a `.bak` file — no active version in this repo yet.
-
-### [TVC Timecode Checker](bb_tvc_timecode_checker/)
-Checks selected clips or sequences for broadcast TVC delivery: whether the record timecode starts at `01:00:00:00` and whether the duration is a standard commercial length (6s, 15s, 30s, 60s, 90s).
 
 ### [Update Slate Date](_deprecated/update_slate_date/) *(Deprecated)*
 Updates all Burn-in Metadata timeline effects in selected sequences to show the current date. Designed for refreshing slate dates before a new round of deliveries.
