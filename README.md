@@ -48,8 +48,8 @@ Imports the open clip created by a selected Write File node into a Batch schemat
 ### [Merge Offline](merge_offline/)
 Automates merging an AAF/XML/EDL sequence with a reference video (found on the same reel by an `offline`/`ref` keyword or fuzzy name match) for online comparison. Stacks the offline edit above the reference, sets primary/secondary tracks, locks the reference, adds virtual padding, and cleans up the reference clip from the Media Panel.
 
-### [Open PSD in Photoshop](open_psd_in_photoshop/)
-Opens the source PSD file of a soft-imported clip in Photoshop (macOS only). Works from Timeline, Batch, Media Panel, and MediaHub. The context menu only appears when the selected clip is a `.psd` file.
+### [Open in Photoshop](open_in_photoshop/)
+Opens the source file of a soft-imported still image (PSD, PNG, JPEG, TIFF, and other Photoshop-friendly formats) in Photoshop — targeted by bundle id, so Photoshop need not be the default app (macOS only). Works from Timeline, Batch, Media Panel, and MediaHub. For frame sequences, the frame the playhead is parked on opens (Timeline / Media Panel); elsewhere the first frame. Replaces the older *Open PSD in Photoshop*.
 
 ### [Quick Posting Aspect Ratios](_republic_specific/quick_posting_aspect_ratios/) *(Workflow-specific — not on Logik)*
 Exports selected clips to social aspect ratios (1x1, 9x16, 4x5), picking the export preset from each clip name's trailing suffix. Exports to the same dated postings folder as Quick Posting MP4, then copies a shortened path and opens Finder there.
