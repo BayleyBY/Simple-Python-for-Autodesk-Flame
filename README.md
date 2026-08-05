@@ -48,6 +48,9 @@ In Batch, adds a Mux node after the selected node and configures it to freeze on
 ### [Import Open Clip](import_open_clip/)
 Imports the open clip created by a selected Write File node into a Batch schematic reel. Resolves the write node's path tokens (including Flame 2027 token-slicing) and the node's own versioning. Single self-contained script, originally based on Michael Vaglienty's Import Write Node.
 
+### [Insert Slate](insert_slate/)
+Inserts a slate clip at the head of one or more sequences, starting at `00:59:53:00` on the topmost existing video track. Select the slate and the sequences together in the Media Panel. Sequences that start after the slate position get their head extended with virtual padding first — nothing ripples and existing content keeps its timecode.
+
 ### [Merge Offline](merge_offline/)
 Automates merging an AAF/XML/EDL sequence with a reference video (found on the same reel by an `offline`/`ref` keyword or fuzzy name match) for online comparison. Stacks the offline edit above the reference, sets primary/secondary tracks, locks the reference, adds virtual padding, and cleans up the reference clip from the Media Panel.
 
