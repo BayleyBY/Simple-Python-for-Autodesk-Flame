@@ -38,7 +38,7 @@ Prerequisites:
   Topmost Visible Track.
 
 Menus:
-Right-click a sequence in the Media Panel -> Sequence... -> Merge Offline
+Right-click a sequence in the Media Panel -> Conform... -> Merge Offline
 """
 
 import re
@@ -64,7 +64,7 @@ def message_box(message):
     msg = QtWidgets.QMessageBox()
     msg.setWindowTitle(SCRIPT_NAME)
     msg.setText(message)
-    msg.exec_()
+    msg.exec()
 
 
 def scope_clip(selection):

@@ -52,7 +52,7 @@ def message_box(message):
     msg = QtWidgets.QMessageBox()
     msg.setWindowTitle(SCRIPT_NAME)
     msg.setText(message)
-    msg.exec_()
+    msg.exec()
 
 
 def valid_file_extension(file_path):

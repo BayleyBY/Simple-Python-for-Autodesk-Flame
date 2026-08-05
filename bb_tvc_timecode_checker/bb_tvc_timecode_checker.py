@@ -20,7 +20,7 @@ cannot see whether a slate or black is really there, so the results dialog
 notes when a layout was assumed so it can be confirmed visually.
 
 Menus:
-Right-click on clips or sequences in the Media Panel -> TVC Checks... ->
+Right-click on clips or sequences in the Media Panel -> Conform... ->
 Check Start Timecode and Duration
 
 Updates:
@@ -68,7 +68,7 @@ def message_box(message):
     msg = QtWidgets.QMessageBox()
     msg.setWindowTitle(SCRIPT_NAME)
     msg.setText(message)
-    msg.exec_()
+    msg.exec()
 
 
 def get_fps_float(fps_string):

@@ -18,7 +18,7 @@ The black source is generated automatically — a temporary 1-second black Colou
 
 1. Select one or more sequences in the Media Panel.
 2. Set track patching on each sequence.
-3. Right-click → **Sequence... > Black Heads and Tails**
+3. Right-click → **Conform... > Black Heads and Tails**
 
 ## Notes
 

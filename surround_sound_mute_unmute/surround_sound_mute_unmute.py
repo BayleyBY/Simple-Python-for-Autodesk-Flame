@@ -11,8 +11,8 @@ Mute or unmute audio tracks 1-6 (standard 5.1 surround layout) on all
 selected clips/sequences.
 
 Menus:
-Right-click a clip in the Media Panel -> Audio -> Mute Surround Channels
-Right-click a clip in the Media Panel -> Audio -> Unmute Surround Channels
+Right-click a clip in the Media Panel -> Audio... -> Mute Surround Channels
+Right-click a clip in the Media Panel -> Audio... -> Unmute Surround Channels
 """
 
 import flame

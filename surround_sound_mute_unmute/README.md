@@ -19,7 +19,7 @@ Mutes or unmutes the first 6 audio tracks on selected clips/sequences. This targ
 ## Usage
 
 1. Select one or more clips in the Media Panel.
-2. Right-click → **Audio > Mute Surround Channels** or **Unmute Surround Channels**
+2. Right-click → **Audio... > Mute Surround Channels** or **Unmute Surround Channels**
 
 ## Requirements
 

@@ -20,7 +20,7 @@ room before its start the head won't land, and a warning lists any sequence whos
 head or tail was not added.
 
 Menus:
-Right-click a sequence in the Media Panel -> Sequence... -> Black Heads and Tails
+Right-click a sequence in the Media Panel -> Conform... -> Black Heads and Tails
 
 Updates:
 v1.1 06.02.26
@@ -51,7 +51,7 @@ def show_warning(message):
 
 
 def _val(attr):
-    '''Unwrap a Flame property that may be a value or a get_value() wrapper.'''
+    """Unwrap a Flame property that may be a value or a get_value() wrapper."""
     try:
         return attr.get_value()
     except AttributeError:
@@ -59,7 +59,7 @@ def _val(attr):
 
 
 def _one_second_frames(sequence):
-    '''Number of frames in one second, from the sequence frame rate.'''
+    """Number of frames in one second, from the sequence frame rate."""
     # frame_rate reports a string such as "23.976 fps".
     try:
         return max(1, round(float(str(_val(sequence.frame_rate)).split()[0])))
@@ -68,7 +68,7 @@ def _one_second_frames(sequence):
 
 
 def _top_track(clip):
-    '''Top video track of the current version, or None.'''
+    """Top video track of the current version, or None."""
     versions = clip.versions
     if not versions:
         return None
@@ -77,7 +77,7 @@ def _top_track(clip):
 
 
 def _make_black_source(destination, sequence, frames):
-    '''Build a temporary 1-second black Colour Source sequence to edit from.'''
+    """Build a temporary 1-second black Colour Source sequence to edit from."""
     duration = flame.PyTime(frames)
 
     # Match the reference sequence's format so the source conforms cleanly;
@@ -215,11 +215,11 @@ def get_media_panel_custom_ui_actions():
     return [
         {
             "name": FOLDER,
-            'actions': [
+            "actions": [
                 {
-                    'name': 'Black Heads and Tails',
-                    'isVisible': scope_clip,
-                    'execute': black_head_tail,
+                    "name": "Black Heads and Tails",
+                    "isVisible": scope_clip,
+                    "execute": black_head_tail,
                 }
             ]
         }

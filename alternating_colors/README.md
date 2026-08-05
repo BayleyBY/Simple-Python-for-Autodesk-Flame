@@ -15,7 +15,7 @@ Only works when the items selected are the same type (Clip, Reel, Folder, etc.)
 
 ## Menus
 
-- Right-click in Media Panel → Alternating Colors
+- Right-click in Media Panel → Alternating Colors...
 
 ## Installation
 

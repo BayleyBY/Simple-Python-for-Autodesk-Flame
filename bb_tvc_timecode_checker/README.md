@@ -18,4 +18,4 @@ The results dialog is condensed: when everything passes it reports one line per 
 
 ## Menus
 
-- Right-click on clips or sequences in the Media Panel → TVC Checks... → Check Start Timecode and Duration
+- Right-click on clips or sequences in the Media Panel → Conform... → Check Start Timecode and Duration

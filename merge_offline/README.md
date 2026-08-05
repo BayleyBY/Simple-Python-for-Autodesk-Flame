@@ -37,7 +37,7 @@ Automates merging an offline edit (AAF/XML/EDL) with a reference video into a si
 ## Usage
 
 14. Select the AAF/XML/EDL sequence in the Media Panel.
-15. Right-click → **Sequence... > Merge Offline**
+15. Right-click → **Conform... > Merge Offline**
 
 ## Requirements
 

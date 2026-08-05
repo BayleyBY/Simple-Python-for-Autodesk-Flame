@@ -15,7 +15,7 @@ Description:
 
 Menus:
 
-    Right-click in Media Panel -> Alternating Colors
+    Right-click in Media Panel -> Alternating Colors...
 
 To install:
 

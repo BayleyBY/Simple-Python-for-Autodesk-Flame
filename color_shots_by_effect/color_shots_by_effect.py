@@ -46,7 +46,7 @@ def message_box(message):
     msg = QtWidgets.QMessageBox()
     msg.setWindowTitle(SCRIPT_NAME)
     msg.setText(message)
-    msg.exec_()
+    msg.exec()
 
 
 def segment_effect_types(segment):
@@ -88,7 +88,7 @@ def choose_effect_and_colour(counts):
     buttons.rejected.connect(dialog.reject)
     layout.addWidget(buttons)
 
-    if dialog.exec_() != QtWidgets.QDialog.Accepted:
+    if dialog.exec() != QtWidgets.QDialog.Accepted:
         return None, None
 
     colour = colour_combo.currentData()

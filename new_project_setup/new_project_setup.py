@@ -89,7 +89,7 @@ def message_box(message):
     msg = QtWidgets.QMessageBox()
     msg.setWindowTitle(SCRIPT_NAME)
     msg.setText(message)
-    msg.exec_()
+    msg.exec()
 
 
 # ---------------------------------------------------------------- settings --
@@ -432,7 +432,7 @@ class SetupDialog(QtWidgets.QDialog):
 
 def run_setup(first_run=False):
     dialog = SetupDialog(load_config() or DEFAULT_CONFIG, first_run=first_run)
-    if dialog.exec_() != QtWidgets.QDialog.Accepted:
+    if dialog.exec() != QtWidgets.QDialog.Accepted:
         return None
     config = dialog.result_config()
     if not save_config(config):
