@@ -51,6 +51,9 @@ Imports the open clip created by a selected Write File node into a Batch schemat
 ### [Merge Offline](merge_offline/)
 Automates merging an AAF/XML/EDL sequence with a reference video (found on the same reel by an `offline`/`ref` keyword or fuzzy name match) for online comparison. Stacks the offline edit above the reference, sets primary/secondary tracks, locks the reference, adds virtual padding, and cleans up the reference clip from the Media Panel.
 
+### [New Project Setup](new_project_setup/)
+Configurable one-click new-project setup. On first use, a setup window asks how your projects should be laid out — desktop reels, library naming, an online reel group, and a bookmarks template file — and saves the answers next to the script. Each action (Clean Desktop, Clear and Rename Library, Create ReelGroup for Online, Create Standard Project Bookmarks, or All The Things) then runs with your saved settings, changeable anytime via Setup...
+
 ### [Open in Photoshop](open_in_photoshop/)
 Opens the source file of a soft-imported still image (PSD, PNG, JPEG, TIFF, and other Photoshop-friendly formats) in Photoshop — targeted by bundle id, so Photoshop need not be the default app (macOS only). Works from Timeline, Batch, Media Panel, and MediaHub. For frame sequences, the frame the playhead is parked on opens (Timeline / Media Panel); elsewhere the first frame. Replaces the older *Open PSD in Photoshop*.
 
