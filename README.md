@@ -27,6 +27,9 @@ In Batch, automatically builds the Action/Media node network needed to cache mot
 ### [Clip Path to Clipboard](clip_path_to_clipboard/)
 Copies the source file path of selected clips to the clipboard. Works across Media Panel, Timeline, Batch, and MediaHub. Includes a shortened path option that strips the leading volume and project folders for cleaner Slack sharing.
 
+### [Color Shots by Effect](color_shots_by_effect/)
+Colors all segments containing a chosen timeline effect (Action, Image, Blur, Timewarp, etc.). Scans the selected sequences for the effect types actually present, then lets you pick one plus a color — nine presets or a custom color picker. Locked segments are skipped and reported. Generalized version of Color Timewarp Shots.
+
 ### [Color Timewarp Shots](color_timewarp_shots/)
 Scans all segments in selected sequences and colors any segment containing a Timewarp timeline effect dark red. Gives a quick visual overview of retimed shots during conform or finishing.
 
