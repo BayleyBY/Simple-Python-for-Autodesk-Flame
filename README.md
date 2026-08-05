@@ -107,4 +107,4 @@ Or use the shared hooks directory for scripts that should be available across al
 
 - Autodesk Flame 2020 or later (specific version requirements listed per script)
 - macOS (some scripts use macOS-specific tools like `open` and `ffmpeg`)
-- ffmpeg at `/usr/local/bin/ffmpeg` (required by `quick_posting_mp4` and `remux_to_mp4`)
+- ffmpeg at `/usr/local/bin/ffmpeg` (only required by the deprecated `remux_to_mp4`)
