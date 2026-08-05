@@ -51,6 +51,9 @@ Imports the open clip created by a selected Write File node into a Batch schemat
 ### [Merge Offline](merge_offline/)
 Automates merging an AAF/XML/EDL sequence with a reference video (found on the same reel by an `offline`/`ref` keyword or fuzzy name match) for online comparison. Stacks the offline edit above the reference, sets primary/secondary tracks, locks the reference, adds virtual padding, and cleans up the reference clip from the Media Panel.
 
+### [Move Playhead](move_playhead/)
+Moves the playhead of all selected clips or sequences to an absolute record timecode — presets for `00:59:53:00` and `01:00:00:00`, plus a custom timecode dialog. The playhead can be parked before the first frame of the sequence, useful for preparing slate insertions at standard broadcast lead-in positions.
+
 ### [New Project Setup](new_project_setup/)
 Configurable one-click new-project setup. On first use, a setup window asks how your projects should be laid out — desktop reels, library naming, an online reel group, and a bookmarks template file — and saves the answers next to the script. Each action (Clean Desktop, Clear and Rename Library, Create ReelGroup for Online, Create Standard Project Bookmarks, or All The Things) then runs with your saved settings, changeable anytime via Setup...
 
