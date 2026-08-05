@@ -30,6 +30,9 @@ try:
 except ImportError:
     from PySide2 import QtWidgets
 
+SCRIPT_NAME = "Quick Posting MP4"
+FOLDER = "Export..."
+
 
 def export_clips(selection):
 
@@ -98,7 +101,7 @@ def scope_clip(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Export...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Quick Posting MP4",

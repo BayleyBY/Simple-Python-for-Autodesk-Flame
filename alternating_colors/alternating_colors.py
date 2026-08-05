@@ -27,6 +27,9 @@ Updates:
         - Initial release.
 """
 
+SCRIPT_NAME = "Alternating Colors"
+FOLDER = "Alternating Colors..."
+
 # Colour pairs in a dictionary
 COLOUR_SCHEMES = {
     "reds": [(96, 12, 12), (50, 0, 0)],
@@ -103,7 +106,7 @@ def get_media_panel_custom_ui_actions():
 
     return [
          {
-            "name": "Alternating Colors",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Reds",

@@ -15,6 +15,9 @@ Right-click a Clip node in Batch -> Cache... -> Cache Motion Vectors
 
 import flame
 
+SCRIPT_NAME = "Cache Motion Vectors"
+FOLDER = "Cache..."
+
 
 def get_context():
     contexts = flame.batch.contexts
@@ -53,7 +56,7 @@ def create_motion(selection):
 def get_batch_custom_ui_actions():
     return [
         {
-            "name": "Cache...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Cache Motion Vectors",

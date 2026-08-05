@@ -1,6 +1,6 @@
 """
 Script Name: Merge Offline
-Script Version: 1.0
+Script Version: 1.1
 Flame Version: 2027
 Written by: Bryan Bayley
 Help from: Fred Warren
@@ -53,6 +53,7 @@ except ImportError:
     from PySide2 import QtWidgets
 
 SCRIPT_NAME = "Merge Offline"
+FOLDER = "Conform..."
 
 # Minimum similarity (0-1) between the sequence name and a clip name for the
 # fuzzy fallback to accept the clip as the reference.
@@ -323,7 +324,7 @@ def merge_offline(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Sequence...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Merge Offline",

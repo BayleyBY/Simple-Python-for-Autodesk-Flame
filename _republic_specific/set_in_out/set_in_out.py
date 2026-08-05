@@ -1,9 +1,10 @@
 """
 Script Name: Set In Out
-Script Version: 1.0
+Script Version: 1.1
 Flame Version: 2021.1
 Written by: Bryan Bayley
 Creation Date: 07.29.21
+Updated: 08.04.26
 
 Description:
 Set In/Out marks on selected clips for common delivery and approval workflows.
@@ -15,14 +16,16 @@ All presets assume:
 
 Menus:
 Right-click a clip in the Media Panel -> Set In-Out... -> Clear All In-Out
-Right-click a clip in the Media Panel -> Set In-Out... -> Set In-Out for CLIENT POSTING
-Right-click a clip in the Media Panel -> Set In-Out... -> Set In-Out for SLATED APPROVALS
-Right-click a clip in the Media Panel -> Set In-Out... -> Set In-Out for SLATED DELIVERY
-Right-click a clip in the Media Panel -> Set In-Out... -> Set In-Out for OLV-SOCIAL
-Right-click a clip in the Media Panel -> Set In-Out... -> Set In-Out for Republic Master
+Right-click a clip in the Media Panel -> Set In-Out... -> One Second Heads and Tails
+Right-click a clip in the Media Panel -> Set In-Out... -> Slated with Tails
+Right-click a clip in the Media Panel -> Set In-Out... -> Slated no Tails
+Right-click a clip in the Media Panel -> Set In-Out... -> Frame-to-Frame
 """
 
 import flame
+
+SCRIPT_NAME = "Set In Out"
+FOLDER = "Set In-Out..."
 
 
 def clear_in_out(selection):
@@ -63,14 +66,6 @@ def in_out_olv(selection):
         clip.in_mark = flame.PyTime("01:00:00:00", clip.frame_rate)
 
 
-def in_out_republic_master(selection):
-    for clip in selection:
-        clip.in_mark = None
-        clip.out_mark = None
-        clip.out_mark = int(clip.duration.frame) + 1
-        clip.in_mark = flame.PyTime("00:59:51:00", clip.frame_rate)
-
-
 def scope_clip(selection):
     for item in selection:
         if isinstance(item, flame.PyClip):
@@ -81,7 +76,7 @@ def scope_clip(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Set In-Out...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Clear All In-Out",
@@ -90,33 +85,27 @@ def get_media_panel_custom_ui_actions():
                     "minimumVersion": "2022"
                 },
                 {
-                    "name": "Set In-Out for CLIENT POSTING",
+                    "name": "One Second Heads and Tails",
                     "isVisible": scope_clip,
                     "execute": in_out_posting,
                     "minimumVersion": "2022"
                 },
                 {
-                    "name": "Set In-Out for SLATED APPROVALS",
+                    "name": "Slated with Tails",
                     "isVisible": scope_clip,
                     "execute": in_out_slated_approval,
                     "minimumVersion": "2022"
                 },
                 {
-                    "name": "Set In-Out for SLATED DELIVERY",
+                    "name": "Slated no Tails",
                     "isVisible": scope_clip,
                     "execute": in_out_slated,
                     "minimumVersion": "2022"
                 },
                 {
-                    "name": "Set In-Out for OLV-SOCIAL",
+                    "name": "Frame-to-Frame",
                     "isVisible": scope_clip,
                     "execute": in_out_olv,
-                    "minimumVersion": "2022"
-                },
-                {
-                    "name": "Set In-Out for Republic Master",
-                    "isVisible": scope_clip,
-                    "execute": in_out_republic_master,
                     "minimumVersion": "2022"
                 }
             ]

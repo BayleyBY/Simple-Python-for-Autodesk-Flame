@@ -36,6 +36,7 @@ except ImportError:
     from PySide2 import QtWidgets
 
 SCRIPT_NAME = "Insert Slate"
+FOLDER = "Sequence..."
 
 # Absolute record timecode where the slate starts.
 SLATE_TIMECODE = "00:59:53:00"
@@ -172,7 +173,7 @@ def insert_slate(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Sequence...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Insert Slate at 00:59:53:00",

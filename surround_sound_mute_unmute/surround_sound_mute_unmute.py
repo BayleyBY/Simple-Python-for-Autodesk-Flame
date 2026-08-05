@@ -17,6 +17,9 @@ Right-click a clip in the Media Panel -> Audio -> Unmute Surround Channels
 
 import flame
 
+SCRIPT_NAME = "Surround Sound Mute Unmute"
+FOLDER = "Audio..."
+
 SURROUND_TRACK_COUNT = 6
 
 
@@ -42,7 +45,7 @@ def scope_clip(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Audio",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Mute Surround Channels",

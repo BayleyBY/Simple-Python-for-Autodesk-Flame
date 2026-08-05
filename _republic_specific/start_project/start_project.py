@@ -26,6 +26,9 @@ import os
 import shutil
 import flame
 
+SCRIPT_NAME = "Start Project"
+FOLDER = "New Project Setup"
+
 
 def clean_desktop(selection):
     desk = flame.project.current_project.current_workspace.desktop
@@ -104,7 +107,7 @@ def scope_workspace(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "New Project Setup",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Clean Desktop",

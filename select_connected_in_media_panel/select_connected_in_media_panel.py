@@ -15,7 +15,7 @@ that operate on the currently focused timeline segment:
 - Select and Color Clips in Media Panel: same as above, and also colours each
   connected clip green for visual identification (useful when clips span multiple
   reels). Use "Uncolor Connected Clips" to clean up.
-- Uncolor Connected Clips: removes the green colour from the connected clips.
+- Uncolor Connected Clips: removes the colour label from the connected clips.
 
 Actions are only visible when the focused segment has 2 or more connected
 segments. Does not support multi-segment selection; operates on the single
@@ -28,6 +28,9 @@ Right-click a segment in the Timeline -> Connected Segments... -> Uncolor Connec
 """
 
 import flame
+
+SCRIPT_NAME = "Select Connected in Media Panel"
+FOLDER = "Connected Segments..."
 
 
 def scope_connected(selection):
@@ -84,7 +87,7 @@ def clear_color_connected_in_media_panel(selection):
 def get_timeline_custom_ui_actions():
     return [
         {
-            "name": "Connected Segments...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Select Connected Clips in Media Panel",

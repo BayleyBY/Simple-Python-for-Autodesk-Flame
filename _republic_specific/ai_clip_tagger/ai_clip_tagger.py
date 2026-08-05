@@ -27,6 +27,9 @@ import urllib.error
 import traceback
 import re
 
+SCRIPT_NAME = "AI Clip Tagger"
+FOLDER = "AI..."
+
 LOG_PATH = os.path.expanduser("~/Desktop/ai_tagger_log.txt")  # overridden at runtime
 
 # Haiku pricing — update if Anthropic changes rates
@@ -235,7 +238,7 @@ def scope_clip(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "AI...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Tag Clips with AI",

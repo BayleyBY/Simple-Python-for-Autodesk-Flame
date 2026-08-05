@@ -35,6 +35,7 @@ except ImportError:
     from PySide2 import QtWidgets
 
 SCRIPT_NAME = "Open in Photoshop"
+FOLDER = "Open..."
 
 # Stable across Photoshop versions ("Adobe Photoshop 2025" etc.), so Launch
 # Services finds whichever one is installed.
@@ -243,7 +244,7 @@ def scope_file(selection):
 def get_timeline_custom_ui_actions():
     return [
         {
-            "name": "Open...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Open in Photoshop",
@@ -259,7 +260,7 @@ def get_timeline_custom_ui_actions():
 def get_batch_custom_ui_actions():
     return [
         {
-            "name": "Open...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Open in Photoshop",
@@ -275,7 +276,7 @@ def get_batch_custom_ui_actions():
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Open...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Open in Photoshop",
@@ -291,7 +292,7 @@ def get_media_panel_custom_ui_actions():
 def get_mediahub_files_custom_ui_actions():
     return [
         {
-            "name": "Open...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Open in Photoshop",

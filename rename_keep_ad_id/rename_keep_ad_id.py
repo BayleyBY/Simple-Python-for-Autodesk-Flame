@@ -21,6 +21,9 @@ Right-click a clip in the Media Panel -> Rename... -> Remove Premiere XML Suffix
 
 import flame
 
+SCRIPT_NAME = "Rename Keep AD-ID"
+FOLDER = "Rename..."
+
 
 def keep_9(selection):
     for item in selection:
@@ -47,7 +50,7 @@ def scope_clip(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Rename...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Keep 9 (ISCI ID)",

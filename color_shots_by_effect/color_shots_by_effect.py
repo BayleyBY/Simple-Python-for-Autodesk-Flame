@@ -26,6 +26,7 @@ except ImportError:
     from PySide2 import QtWidgets
 
 SCRIPT_NAME = "Color Shots by Effect"
+FOLDER = "Sequence..."
 
 # Flame colours are RGB tuples with values 0-100.
 COLOURS = [
@@ -154,7 +155,7 @@ def scope_seq(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Sequence...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Color Shots by Effect",

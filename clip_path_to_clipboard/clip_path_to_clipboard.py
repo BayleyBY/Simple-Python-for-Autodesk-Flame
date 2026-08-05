@@ -27,6 +27,9 @@ try:
 except ImportError:
     from PySide2 import QtWidgets
 
+SCRIPT_NAME = "Clip Path to Clipboard"
+FOLDER = "File Path..."
+
 
 def _set_clipboard(text):
     QtWidgets.QApplication.instance().clipboard().setText(text)
@@ -107,7 +110,7 @@ def scope_file(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "File Path...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Copy Path to Clipboard",
@@ -123,7 +126,7 @@ def get_media_panel_custom_ui_actions():
 def get_batch_custom_ui_actions():
     return [
         {
-            "name": "File Path...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Copy Path to Clipboard",
@@ -139,7 +142,7 @@ def get_batch_custom_ui_actions():
 def get_mediahub_files_custom_ui_actions():
     return [
         {
-            "name": "File Path...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Copy Full Path to Clipboard",
@@ -161,7 +164,7 @@ def get_mediahub_files_custom_ui_actions():
 def get_timeline_custom_ui_actions():
     return [
         {
-            "name": "File Path...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Copy Path to Clipboard",

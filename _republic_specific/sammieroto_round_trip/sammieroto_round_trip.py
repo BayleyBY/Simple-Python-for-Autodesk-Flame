@@ -48,6 +48,9 @@ try:
 except ImportError:
     HAS_PYSIDE = False
 
+SCRIPT_NAME = "SammieRoto Round Trip"
+FOLDER = "SammieRoto"
+
 # ================== CONFIG ==================
 # Sammie-Roto 2.0 launcher path (calls with file argument)
 SAMMIE_CMD = ["/bin/bash", "/<YOUR PATH>/Sammie-Roto-2-main/run_sammie.command"]
@@ -431,7 +434,7 @@ def scope_clip_node(selection):
 
 def get_media_panel_custom_ui_actions():
     return [{
-        "name": "SammieRoto",
+        "name": FOLDER,
         "actions": [{
             "name": "Open Sammie 2.0",
             "execute": export_and_open_sammie,
@@ -442,7 +445,7 @@ def get_media_panel_custom_ui_actions():
 
 def get_batch_custom_ui_actions():
     return [{
-        "name": "SammieRoto",
+        "name": FOLDER,
         "actions": [{
             "name": "Open Sammie 2.0",
             "execute": export_and_open_sammie,

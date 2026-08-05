@@ -47,6 +47,7 @@ except ImportError:
     from PySide2 import QtWidgets
 
 SCRIPT_NAME = "BB TVC Timecode Checker"
+FOLDER = "Conform..."
 
 STANDARD_DURATIONS = [6, 15, 30, 60, 90]  # Standard commercial lengths in seconds
 
@@ -266,7 +267,7 @@ def scope_clip(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "TVC Checks...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Check Start Timecode and Duration",

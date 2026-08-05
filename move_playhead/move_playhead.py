@@ -29,13 +29,16 @@ try:
 except ImportError:
     from PySide2 import QtWidgets
 
+SCRIPT_NAME = "Move Playhead"
+FOLDER = "Move Playhead..."
+
 TIMECODE_PATTERN = re.compile(r"^\d{1,2}:\d{2}:\d{2}[:;]\d{1,2}$")
 
 
 def message_box(message):
 
     mbox = QtWidgets.QMessageBox()
-    mbox.setWindowTitle("Move Playhead")
+    mbox.setWindowTitle(SCRIPT_NAME)
     mbox.setText(message)
     mbox.exec()
 
@@ -75,7 +78,7 @@ def move_playhead_hour(selection):
 def move_playhead_custom(selection):
 
     timecode, ok = QtWidgets.QInputDialog.getText(
-        None, "Move Playhead", "Timecode (HH:MM:SS:FF):", text="01:00:00:00")
+        None, SCRIPT_NAME, "Timecode (HH:MM:SS:FF):", text="01:00:00:00")
     if not ok:
         return
 
@@ -100,7 +103,7 @@ def scope_clip(selection):
 def get_media_panel_custom_ui_actions():
 
     return [{
-        "name": "Move Playhead...",
+        "name": FOLDER,
         "actions": [
             {
                 "name": "Move Playhead to 00:59:53:00",

@@ -35,6 +35,7 @@ except ImportError:
     from PySide2 import QtWidgets
 
 SCRIPT_NAME = "New Project Setup"
+FOLDER = "New Project Setup"
 CONFIG_FILE_NAME = "new_project_setup_config.json"
 
 # Flame colours are RGB tuples with values 0-100.
@@ -704,7 +705,7 @@ def scope_workspace(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "New Project Setup",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Clean Desktop",

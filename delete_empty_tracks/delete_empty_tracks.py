@@ -16,6 +16,9 @@ Right-click a sequence in the Media Panel -> Sequence... -> Delete All Empty Tra
 
 import flame
 
+SCRIPT_NAME = "Delete Empty Tracks"
+FOLDER = "Sequence..."
+
 
 def delete_empty_video_tracks(selection):
     for clip in selection:
@@ -58,7 +61,7 @@ def scope_sequence(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Sequence...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Delete All Empty Tracks",

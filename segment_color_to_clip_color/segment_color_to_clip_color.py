@@ -22,6 +22,9 @@ Right-click a clip in the Media Panel -> Sequence... -> Copy Segment Color to Cl
 
 import flame
 
+SCRIPT_NAME = "Segment Color to Clip Color"
+FOLDER = "Sequence..."
+
 
 def segment_color_to_clip_color(selection):
     for clip in selection:
@@ -40,7 +43,7 @@ def scope_clip(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Sequence...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Copy Segment Color to Clip Color",

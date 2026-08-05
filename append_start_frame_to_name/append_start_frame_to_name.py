@@ -17,6 +17,9 @@ Right-click a clip in the Media Panel -> Rename... -> Append Start Frame to Name
 
 import flame
 
+SCRIPT_NAME = "Append Start Frame to Name"
+FOLDER = "Rename..."
+
 
 def startframe_to_name(selection):
     for item in selection:
@@ -36,7 +39,7 @@ def scope_clip(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Rename...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Append Start Frame to Name",

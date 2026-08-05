@@ -15,6 +15,9 @@ Right-click a sequence in the Media Panel -> Sequence... -> Color Timewarped Sho
 
 import flame
 
+SCRIPT_NAME = "Color Timewarp Shots"
+FOLDER = "Sequence..."
+
 
 def color_timewarp_clip(selection):
     for shot in selection:
@@ -36,7 +39,7 @@ def scope_seq(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Sequence...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Color Timewarped Shots",

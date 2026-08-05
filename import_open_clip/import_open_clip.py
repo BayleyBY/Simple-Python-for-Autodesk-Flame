@@ -39,6 +39,7 @@ except ImportError:
 #-------------------------------------
 
 SCRIPT_NAME = "Import Open Clip to Batch"
+FOLDER = "Import..."
 
 # Destination Batch schematic reel for the imported open clip. Created
 # automatically if it doesn't already exist. Edit to change the target reel.
@@ -214,7 +215,7 @@ def get_batch_custom_ui_actions():
 
     return [
         {
-            "name": "Import...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Import Open Clip to Batch",

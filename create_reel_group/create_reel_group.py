@@ -15,6 +15,9 @@ Right-click a Library in the Media Panel -> Create Reel Group -> Create ReelGrou
 
 import flame
 
+SCRIPT_NAME = "Create Reel Group"
+FOLDER = "Create Reel Group"
+
 
 def create_reel_group(selection):
     for item in selection:
@@ -42,7 +45,7 @@ def scope_library(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Create Reel Group",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Create ReelGroup for Online Assemble",

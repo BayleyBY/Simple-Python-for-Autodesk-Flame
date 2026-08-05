@@ -27,7 +27,7 @@ v1.1 06.02.26
 - Restore the original selection and active timeline when finished (creating and
   deleting the temp source otherwise left the top-most item selected).
 
-v1.0 08.16.21
+v1.0 06.02.26
 - Initial release.
 """
 
@@ -37,6 +37,9 @@ try:
     from PySide6 import QtWidgets
 except ImportError:
     from PySide2 import QtWidgets
+
+SCRIPT_NAME = "Black Head and Tail"
+FOLDER = "Conform..."
 
 
 BLACK = (0.0, 0.0, 0.0)
@@ -211,7 +214,7 @@ def scope_clip(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            'name': 'Sequence...',
+            "name": FOLDER,
             'actions': [
                 {
                     'name': 'Black Heads and Tails',

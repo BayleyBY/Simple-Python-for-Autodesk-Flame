@@ -39,6 +39,9 @@ try:
 except ImportError:
     from PySide2 import QtWidgets
 
+SCRIPT_NAME = "Quick Posting Aspect Ratios"
+FOLDER = "Export..."
+
 
 PRESET_DIR = "/Volumes/Flame_Archive/SHARED/export/presets/movie_file"
 
@@ -143,7 +146,7 @@ def scope_clip(selection):
 def get_media_panel_custom_ui_actions():
     return [
         {
-            "name": "Export...",
+            "name": FOLDER,
             "actions": [
                 {
                     "name": "Quick Posting — Social Aspect Ratios",
