@@ -6,6 +6,9 @@ A collection of Python utility scripts for [Autodesk Flame](https://www.autodesk
 
 Each script lives in its own folder with a README explaining usage, prerequisites, and context menu locations.
 
+### [Add View Transform Track](add_view_transform_track/)
+Adds a new video track to selected sequences and puts a Colour Management gap effect on it, switched from Colour Transform to View Transform mode. Gives a sequence a display transform over the picture below it without modifying any existing segments. The new track lands directly below each sequence's topmost track, putting the transform between the footage and the graphics above it, and the effect covers the picture only — black heads and tails are left uncovered. The graphics need to be on a single track when the script is run.
+
 ### [AI Clip Tagger](_republic_specific/ai_clip_tagger/) *(Workflow-specific — not on Logik)*
 Tags selected clips with AI-generated scene labels (person, interior, office, etc.) by exporting a still frame from each clip and sending it to the Claude vision API. Tags are applied with Flame's native tag system. Requires an Anthropic API key.
 
