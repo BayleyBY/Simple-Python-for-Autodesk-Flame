@@ -14,8 +14,8 @@ Adds a **Connected Segments...** menu to the Timeline that traces the Media Pane
 | Action | Description |
 |--------|-------------|
 | **Select Connected Clips in Media Panel** | Finds all clips containing segments connected to the focused segment, expands their parent reels, and selects them. |
-| **Select and Color Clips in Media Panel** | Same as above, and also colours each connected clip green for visual identification — handy when the clips span multiple reels. |
-| **Uncolor Connected Clips** | Removes the green colour from the connected clips. |
+| **Select and Color Clips in Media Panel** | Same as above, and also colours each connected clip yellow for visual identification — handy when the clips span multiple reels. |
+| **Uncolor Connected Clips** | Removes the yellow colour from the connected clips. |
 
 The actions only appear when the focused segment has 2 or more connected segments. Operates on the single focused segment (no multi-segment selection).
 

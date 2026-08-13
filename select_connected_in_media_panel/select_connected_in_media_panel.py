@@ -13,7 +13,7 @@ that operate on the currently focused timeline segment:
   segments connected to the focused segment, expands their parent reels, and
   selects them.
 - Select and Color Clips in Media Panel: same as above, and also colours each
-  connected clip green for visual identification (useful when clips span multiple
+  connected clip yellow for visual identification (useful when clips span multiple
   reels). Use "Uncolor Connected Clips" to clean up.
 - Uncolor Connected Clips: removes the colour label from the connected clips.
 
@@ -62,13 +62,13 @@ def select_and_color_connected_in_media_panel(selection):
     # Build the list of clips that contain a connected segment.
     clips = [seg.parent.parent.parent for seg in item.connected_segments()]
 
-    # Expand the parent reel of each clip, select them, and colour them green.
+    # Expand the parent reel of each clip, select them, and colour them yellow.
     if clips:
         for clip in clips:
             clip.parent.expanded = True
         flame.media_panel.selected_entries = clips
         for clip in clips:
-            clip.colour = (29, 67, 45)
+            clip.colour = (130, 130, 0)
 
 
 def clear_color_connected_in_media_panel(selection):
