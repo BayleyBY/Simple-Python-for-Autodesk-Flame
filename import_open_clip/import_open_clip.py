@@ -38,7 +38,7 @@ except ImportError:
 # [Constants]
 #-------------------------------------
 
-SCRIPT_NAME = "Import Open Clip to Batch"
+SCRIPT_NAME = "Import Open Clip"
 FOLDER = "Import..."
 
 # Destination Batch schematic reel for the imported open clip. Created
@@ -175,7 +175,11 @@ def translate_write_node_path(write_node):
 def create_schematic_reel():
     """Create the destination schematic reel if it doesn't already exist."""
 
-    if SCHEMATIC_REEL not in [reel.name for reel in flame.batch.reels]:
+    # reel.name is a quote-wrapped Flame attribute ('Renders'), so it has to be
+    # unwrapped before comparing against a plain string — otherwise the check
+    # never matches and a duplicate reel is created on every run.
+    existing = [str(reel.name)[1:-1] for reel in flame.batch.reels]
+    if SCHEMATIC_REEL not in existing:
         flame.batch.create_reel(SCHEMATIC_REEL)
 
 def import_open_clip(selection):
