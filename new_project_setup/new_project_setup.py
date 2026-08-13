@@ -26,6 +26,7 @@ Right-click the Workspace in the Media Panel -> New Project Setup -> Setup...
 
 import json
 import os
+import re
 import shutil
 import traceback
 
@@ -36,9 +37,18 @@ try:
 except ImportError:
     from PySide2 import QtWidgets
 
+try:
+    from libwiretapPythonClientAPI import (
+        WireTapClient, WireTapNodeHandle, WireTapServerHandle, WireTapStr)
+except ImportError:
+    WireTapClient = None
+
 SCRIPT_NAME = "New Project Setup"
 FOLDER = "New Project Setup"
 CONFIG_FILE_NAME = "new_project_setup_config.json"
+
+# Set on first use by wiretap_client(); must outlive the lookup calls.
+_WIRETAP_CLIENT = None
 
 # Flame colours are RGB tuples with values 0-100.
 COLOURS = [
@@ -369,8 +379,9 @@ class SetupDialog(QtWidgets.QDialog):
         layout.addLayout(form)
         layout.addWidget(self.note_label(
             "Point this at a saved Flame bookmarks file. Create Standard "
-            "Project Bookmarks copies it to "
-            "/opt/Autodesk/project/<project>/status/cf_bookmarks.json.\n\n"
+            "Project Bookmarks copies it to status/cf_bookmarks.json inside "
+            "the current project's setup directory — wherever that project "
+            "actually lives, not just the /opt/Autodesk default.\n\n"
             "Tip: set up bookmarks once in any project, then use that "
             "project's status/cf_bookmarks.json as the template. Leave empty "
             "to skip bookmarks."))
@@ -378,8 +389,12 @@ class SetupDialog(QtWidgets.QDialog):
         return tab
 
     def browse_bookmarks(self):
+        # Default to this project's own status/ folder — the tip below the
+        # field suggests reusing an existing project's bookmarks file.
+        setup_dir = project_setup_dir(str(flame.project.current_project.name))
         start_dir = os.path.dirname(self.bookmarks_path.text()) \
-            or "/opt/Autodesk/project"
+            or (os.path.join(setup_dir, "status") if setup_dir
+                else "/opt/Autodesk/project")
         path, _ = QtWidgets.QFileDialog.getOpenFileName(
             self, "Choose a saved bookmarks file", start_dir,
             "Bookmarks (*.json);;All files (*)")
@@ -630,6 +645,56 @@ def apply_online_reel_group(config):
     print("%s: reel group \"%s\" created" % (SCRIPT_NAME, cfg["reel_group_name"]))
 
 
+def wiretap_client():
+    """Return an initialized Wiretap client, or None if it will not start.
+
+    The client object must be kept alive: dropping the last reference
+    uninitializes the API, and every later call fails with "API not
+    initialized". Hence the module-level cache rather than a local.
+    There is deliberately no WireTapClientUninit() — Flame owns the
+    connection for the session, and uninit-ing here trips an assertion in
+    CoNetwork.C.
+    """
+    global _WIRETAP_CLIENT
+    if _WIRETAP_CLIENT is None:
+        client = WireTapClient()
+        if not client.init():
+            return None
+        _WIRETAP_CLIENT = client
+    return _WIRETAP_CLIENT
+
+
+def project_setup_dir(project_name):
+    """Return the current project's setup directory, or None if unknown.
+
+    The setup directory holds status/, cfg/, export/ and friends. It only
+    defaults to /opt/Autodesk/project/<project> — the artist picks it when
+    creating the project, so on a facility with shared storage it usually
+    lives on a media volume instead (e.g.
+    /Volumes/<volume>/<projects>/<project>/setups). Wiretap is the
+    authority: its project node carries the real path in <SetupDir>.
+    """
+    if WireTapClient is None:
+        return None
+    try:
+        if wiretap_client() is None:
+            return None
+        server = WireTapServerHandle("localhost:IFFFS")
+        node = WireTapNodeHandle(server, "/projects/%s" % project_name)
+        project_xml = WireTapStr()
+        if not node.getMetaData("XML", "", 1, project_xml):
+            print("%s: Wiretap could not read project \"%s\": %s"
+                  % (SCRIPT_NAME, project_name, node.lastError()))
+            return None
+        match = re.search(r"<SetupDir>(.*?)</SetupDir>", project_xml.c_str())
+        if match is None or not match.group(1):
+            return None
+        return match.group(1)
+    except Exception:
+        traceback.print_exc()
+        return None
+
+
 def apply_bookmarks(config):
     template_file = config["bookmarks"]["template_path"]
     if not template_file:
@@ -641,7 +706,21 @@ def apply_bookmarks(config):
         return
 
     project_name = str(flame.project.current_project.name)
-    destination_dir = os.path.join("/opt/Autodesk/project", project_name, "status")
+    setup_dir = project_setup_dir(project_name)
+    if setup_dir is None:
+        # Fall back to the install default, but only if it is really there —
+        # writing bookmarks into a path this project does not use would look
+        # like success and change nothing.
+        setup_dir = os.path.join("/opt/Autodesk/project", project_name)
+        print("%s: Wiretap lookup failed, falling back to %s"
+              % (SCRIPT_NAME, setup_dir))
+    if not os.path.isdir(setup_dir):
+        message_box("Could not find the setup directory for project \"%s\".\n\n"
+                    "Looked for:\n%s\n\nBookmarks were not copied."
+                    % (project_name, setup_dir))
+        return
+
+    destination_dir = os.path.join(setup_dir, "status")
     os.makedirs(destination_dir, exist_ok=True)
     shutil.copy(template_file, os.path.join(destination_dir, "cf_bookmarks.json"))
     print("%s: bookmarks copied to %s" % (SCRIPT_NAME, destination_dir))

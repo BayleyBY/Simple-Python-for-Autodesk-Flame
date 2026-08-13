@@ -17,7 +17,7 @@ The setup window opens automatically the first time any action is used, and can 
 | **Clean Desktop** | Deletes all reel groups and batch groups on the desktop, then creates your configured reel group (reels/sequence reels, each with its own colour) and renames/recolours the auto-created batch group. |
 | **Clear and Rename Library** | Renames the first library to the project name (or a custom name, or leaves it alone), colours it, and optionally deletes Flame's default "Sequence" stubs. |
 | **Create ReelGroup for Online** | Creates your configured online reel group (e.g. `_Sources Sequence` / `Sources` / `Conform`) in the first library. |
-| **Create Standard Project Bookmarks** | Copies your saved bookmarks file to `/opt/Autodesk/project/<project>/status/cf_bookmarks.json`. |
+| **Create Standard Project Bookmarks** | Copies your saved bookmarks file to `status/cf_bookmarks.json` inside the current project's setup directory — resolved from the project itself, so it works whether the project lives under `/opt/Autodesk/project` or on a media volume. |
 | **All The Things** | Runs all four actions in sequence; failures in one step don't stop the rest. |
 | **Setup...** | Reopens the setup window to change any of the above. |
 
@@ -41,4 +41,4 @@ Settings are saved as `new_project_setup_config.json` next to the script (shared
 ## Requirements
 
 - Flame 2023+ (PySide6/PySide2 fallback included)
-- Bookmarks action only: a saved bookmarks `.json` and a writable `/opt/Autodesk/project/<project>/status/` directory
+- Bookmarks action only: a saved bookmarks `.json`, and a writable `status/` directory inside the project's setup directory (found automatically via Wiretap; falls back to `/opt/Autodesk/project/<project>` and reports if neither exists)
