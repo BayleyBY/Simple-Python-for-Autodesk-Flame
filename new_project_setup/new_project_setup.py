@@ -50,7 +50,7 @@ CONFIG_FILE_NAME = "new_project_setup_config.json"
 # Set on first use by wiretap_client(); must outlive the lookup calls.
 _WIRETAP_CLIENT = None
 
-# Flame colours are RGB tuples with values 0-100.
+# Flame colours are RGB tuples with values 0-255.
 COLOURS = [
     ("Dark Red", (96, 12, 12)),
     ("Orange", (90, 55, 10)),
@@ -154,11 +154,14 @@ def save_config(config):
 # ---------------------------------------------------------------- setup UI --
 
 def qt_rgb(colour):
-    return "rgb(%d, %d, %d)" % tuple(round(value * 2.55) for value in colour)
+    # Flame and Qt share the same 0-255 int scale, so no conversion is needed.
+    # This previously multiplied by 2.55 on the belief that Flame used 0-100,
+    # which made every swatch preview 2.55x brighter than the applied colour.
+    return "rgb(%d, %d, %d)" % tuple(round(value) for value in colour)
 
 
 class ColourButton(QtWidgets.QPushButton):
-    """Swatch button holding a 0-100 RGB colour; click for presets/custom."""
+    """Swatch button holding a 0-255 RGB colour; click for presets/custom."""
 
     def __init__(self, colour):
         super().__init__()
@@ -168,7 +171,7 @@ class ColourButton(QtWidgets.QPushButton):
 
     def set_colour(self, colour):
         self.colour = list(colour)
-        text_colour = "black" if sum(colour) > 150 else "white"
+        text_colour = "black" if sum(colour) > 382 else "white"
         self.setStyleSheet("background-color: %s; color: %s"
                            % (qt_rgb(colour), text_colour))
         for name, rgb in COLOURS:
@@ -191,9 +194,8 @@ class ColourButton(QtWidgets.QPushButton):
                 return
         picked = QtWidgets.QColorDialog.getColor()
         if picked.isValid():
-            self.set_colour([
-                round(value / 255 * 100)
-                for value in (picked.red(), picked.green(), picked.blue())])
+            self.set_colour(
+                [picked.red(), picked.green(), picked.blue()])
 
 
 class ReelListEditor(QtWidgets.QWidget):

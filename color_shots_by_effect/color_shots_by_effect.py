@@ -28,7 +28,7 @@ except ImportError:
 SCRIPT_NAME = "Color Shots by Effect"
 FOLDER = "Sequence..."
 
-# Flame colours are RGB tuples with values 0-100.
+# Flame colours are RGB tuples with values 0-255.
 COLOURS = [
     ("Dark Red", (96, 12, 12)),
     ("Orange", (90, 55, 10)),
@@ -96,9 +96,7 @@ def choose_effect_and_colour(counts):
         picked = QtWidgets.QColorDialog.getColor()
         if not picked.isValid():
             return None, None
-        colour = tuple(
-            round(value / 255 * 100)
-            for value in (picked.red(), picked.green(), picked.blue()))
+        colour = (picked.red(), picked.green(), picked.blue())
 
     return effect_combo.currentData(), colour
 
