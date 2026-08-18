@@ -93,6 +93,9 @@ Adds a Timeline menu that finds the Media Panel clips connected to the focused s
 ### [Set In Out](_republic_specific/set_in_out/) *(Workflow-specific — not on Logik)*
 Sets In/Out marks on selected clips for common delivery and approval workflows: Client Posting, Slated Approvals, Slated Delivery, OLV/Social, and Republic Master. Each preset is tuned for the standard sequence layout with slate at `59:53:00` and picture at `1:00:00:00`.
 
+### [Slate Maker](slate_maker_v2/) *(GPL-3.0 — extended from Michael Vaglienty's script)*
+Creates slates from CSV data using Type Node templates, in one or many ratios, and updates them afterwards. Token values such as date, agency or copyright can be bulk-edited across a selection — or one field at a time, on any slate, including ones the script did not create. Sequences can also be renamed from the slate they contain. Multi-file script: copy the whole folder.
+
 ### [Start Project](_republic_specific/start_project/) *(Workflow-specific — not on Logik)*
 Full new-project setup in one click. Cleans the desktop and creates standard reels, renames the library to match the project, creates an Online Assemble reel group, and copies standard job folder bookmarks into the project. Individual actions are also available separately.
 
