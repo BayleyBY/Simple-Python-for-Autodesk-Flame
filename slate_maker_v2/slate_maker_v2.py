@@ -20,12 +20,12 @@
 
 """
 Script Name: Slate Maker
-Script Version: v2.6.0
+Script Version: v2.6.1
 Flame Version: 2027
 Written by: Michael Vaglienty
 Extended by: Bryan Bayley (v2.0.0 and later)
 Creation Date: 12.29.18
-Update Date: 08.06.26
+Update Date: 08.21.26
 
 Derived from: Slate Maker v1.0.0 / Uber Slate Maker v1.3.1
 
@@ -117,6 +117,14 @@ Rename Mode Notes:
 
 Version History:
 
+    v2.6.1 08.21.26 - Fixed Rename from Slate failing with an AttributeError
+                      ('PyFlameConfig' object has no attribute
+                      'rename_spaces_to_underscores') as soon as the rename
+                      window was built. The window read and saved a
+                      'rename_spaces_to_underscores' setting that was never
+                      declared in DEFAULT_CONFIG, so PyFlameConfig never
+                      created the attribute. Added the key, defaulting to True
+                      to match the creation-side Spaces to _ behaviour.
     v2.6.0 08.06.26 - Facility-agnostic update fields: the Update <Field> menu
                       now learns its field list from the slates you create -
                       each creation run merges the CSV's tokens into
@@ -221,7 +229,7 @@ from lib.pyflame_lib_slate_maker_v2 import *
 #-------------------------------------
 
 SCRIPT_NAME = 'Slate Maker'
-SCRIPT_VERSION = 'v2.6.0'
+SCRIPT_VERSION = 'v2.6.1'
 SCRIPT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 # Shared config schema - all modes load the same config/config.json.
@@ -235,6 +243,7 @@ DEFAULT_CONFIG = {
     'create_ratio_folders': True,
     'clip_color': 'No Color',
     'rename_pattern': '',
+    'rename_spaces_to_underscores': True,
     # Update <Field> menu list. Starts empty and is learned from the tokens of
     # each creation run (see learn_update_fields); curate via Edit Update Fields.
     'update_field_tokens': [],
