@@ -22,7 +22,7 @@ Prerequisites:
   Edit, Timeline Home, Set Focus on Topmost Visible Track.
 
 Menus:
-Right-click a slate clip and sequence(s) in the Media Panel -> Sequence... -> Insert Slate at 00:59:53:00
+Right-click a slate clip and sequence(s) in the Media Panel -> Slate Maker... -> Insert Slate at 00:59:53:00
 """
 
 import re
@@ -36,7 +36,7 @@ except ImportError:
     from PySide2 import QtWidgets
 
 SCRIPT_NAME = "Insert Slate"
-FOLDER = "Sequence..."
+FOLDER = "Slate Maker..."
 
 # Absolute record timecode where the slate starts.
 SLATE_TIMECODE = "00:59:53:00"

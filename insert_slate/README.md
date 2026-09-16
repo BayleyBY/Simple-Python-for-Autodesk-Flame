@@ -13,7 +13,7 @@ If a sequence starts after `00:59:53:00` (e.g. at `01:00:00:00` or `00:59:59:00`
 ## Usage
 
 1. In the Media Panel, select the slate clip **and** the sequence(s) to slate in one selection. The one selected item that is not a sequence is taken as the slate.
-2. Right-click → **Sequence... > Insert Slate at 00:59:53:00**
+2. Right-click → **Slate Maker... > Insert Slate at 00:59:53:00**
 
 The slate lands at `00:59:53:00` on each sequence's top track; afterwards the whole timeline is framed (Timeline Home) with the playhead on the first frame and focus on the top track. Failures are listed in a dialog at the end; the run continues past them. If the slate is longer than the gap before the original sequence start, it is inserted anyway and a note is printed in the shell (it will overwrite picture on the top track past the original start).
 
