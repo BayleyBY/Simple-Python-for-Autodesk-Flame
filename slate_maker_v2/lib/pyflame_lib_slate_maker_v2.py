@@ -2612,7 +2612,7 @@ class _PyFlameFunctions():
 
         # Get current screen resolution
         main_window_res = pyflamewin.main_window()
-        screen_resolution = main_window_res.screenGeometry()
+        screen_resolution = main_window_res.geometry()
 
         # Check if high DPI scaling is enabled. If so, double the screen height.
         if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
@@ -6854,7 +6854,7 @@ class PyFlameSlider(QtWidgets.QLineEdit):
             )
         calc_entry.returnPressed.connect(enter)
 
-        regex = QRegularExpression('[0-9_,=,/,*,+,\-,.]+')
+        regex = QRegularExpression(r'[0-9_,=,/,*,+,\-,.]+')
         validator = QValidator(regex)
         calc_entry.setValidator(validator)
 
@@ -12679,7 +12679,7 @@ class PyFlameDialogWindow(QtWidgets.QDialog):
 
             # Get Current Screen Resolution
             main_window_res = pyflamewin.main_window()
-            resolution = main_window_res.screenGeometry()
+            resolution = main_window_res.geometry()
 
             # Center Window on Screen
             self.move((resolution.width() / 2) - (self.frameSize().width() / 2),
@@ -13150,7 +13150,7 @@ class PyFlameWindow(QtWidgets.QWidget):
 
             # Get Current Screen Resolution
             main_window_res = pyflamewin.main_window()
-            resolution = main_window_res.screenGeometry()
+            resolution = main_window_res.geometry()
 
             # Center Window on Screen
             self.move((resolution.width() / 2) - (self.frameSize().width() / 2),

@@ -117,6 +117,23 @@ Rename Mode Notes:
 
 Version History:
 
+    v2.6.2 09.29.26 - Fixed every window failing to open on PySide6 with
+                      AttributeError("'PySide6.QtGui.QScreen' object has no
+                      attribute 'screenGeometry'"), which made Flame skip the
+                      script's hooks entirely. The bundled
+                      lib/pyflame_lib_slate_maker_v2.py asks
+                      _WindowResolution.main_window() for the screen, which
+                      returns a QScreen on Qt 6 and a QDesktopWidget on Qt 5,
+                      then called screenGeometry() on it - a QDesktopWidget
+                      method that QScreen does not have. The three call sites
+                      (gui_resize and two center_window helpers) now call
+                      geometry(), which both classes provide.
+                      Also silenced a SyntaxWarning from the same lib
+                      (invalid escape sequence, backslash-hyphen, line 6857):
+                      the calculator entry's QRegularExpression is now a raw
+                      string, which Python stores identically but no longer
+                      warns about.
+
     v2.6.1 08.21.26 - Fixed Rename from Slate failing with an AttributeError
                       ('PyFlameConfig' object has no attribute
                       'rename_spaces_to_underscores') as soon as the rename
@@ -229,7 +246,7 @@ from lib.pyflame_lib_slate_maker_v2 import *
 #-------------------------------------
 
 SCRIPT_NAME = 'Slate Maker'
-SCRIPT_VERSION = 'v2.6.1'
+SCRIPT_VERSION = 'v2.6.2'
 SCRIPT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 # Shared config schema - all modes load the same config/config.json.
