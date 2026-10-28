@@ -2,13 +2,13 @@
 Script Name: Toggle TimelineFX
 Written By: Kieran Hanrahan
 
-Script Version: 1.1.0
+Script Version: 1.1.1
 Flame Version: 2025
 
 URL: http://github.com/khanrahan/toggle-timeline-fx
 
 Creation Date: 10.17.25
-Update Date:  08.13.26
+Update Date:  09.29.26
 
 Description:
 
@@ -18,6 +18,14 @@ Description:
     timeline-side FX above it.
 
 Updates:
+
+    v1.1.1 09.29.26 (Bryan Bayley)
+
+        - Fixed the window failing to open on PySide6 with
+          AttributeError("'PySide6.QtGui.QScreen' object has no attribute
+          'screenGeometry'"). QScreen has no screenGeometry(); the Qt5
+          QDesktopWidget did. Centring now calls geometry(), which exists on
+          both.
 
     v1.1.0 08.13.26 (Bryan Bayley)
 
@@ -612,7 +620,7 @@ class MainWindow(QtWidgets.QWidget):
         reflect actual size.  Therefore, its important to have your setMinimumSize be
         very close to final size.
         """
-        resolution = QtGui.QGuiApplication.primaryScreen().screenGeometry()
+        resolution = QtGui.QGuiApplication.primaryScreen().geometry()
         self.move(
                 (resolution.width() / 2) - (self.frameSize().width() / 2),
                 (resolution.height() / 2) - (self.frameSize().height() / 2))
