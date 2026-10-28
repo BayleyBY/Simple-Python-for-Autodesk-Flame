@@ -1,9 +1,10 @@
 """
 Script Name: Quick Posting Aspect Ratios
-Script Version: 1.0
+Script Version: 1.1
 Flame Version: 2024
 Written by: Bryan Bayley
 Creation Date: 02.19.26
+Update Date: 10.28.26
 
 Description:
 Export selected clips using a preset chosen by the clip name's trailing
@@ -28,10 +29,22 @@ Requirements:
 - Flame Project Nickname must be the Facilis partition name (e.g. Republic_2023_Q1)
 - Flame Project Name must match the job folder (e.g. R2305590_Client_Project)
 - Aspect-ratio export presets present in PRESET_DIR (see CONFIG below)
+
+Updates:
+
+v1.1 10.28.26
+- The Finder window no longer fails to open after a successful export.
+  flame.execute_command() ran /usr/bin/open outside Flame's GUI session, so
+  LaunchServices could not reach Finder and returned "procNotFound" (-600).
+  Running open as a direct subprocess of Flame keeps it in the session.
+  Same fix as Quick Posting MP4 v1.1.
+- A failure to open Finder is now reported in the shell instead of raising,
+  so the export itself is never lost to it.
 """
 
 import datetime
 import os
+import subprocess
 import flame
 
 try:
@@ -123,10 +136,16 @@ def export_clips(selection):
         qt_app_instance.clipboard().setText(slack_path)
 
         # Open a Finder window at the export folder.
-        # shell=True is required so the shell interprets the quotes around the path;
-        # without it, execute_command passes the string to exec directly and the
-        # quote characters become part of the path argument.
-        flame.execute_command(f'/usr/bin/open "{export_path}"', shell=True)
+        # Must be a direct subprocess of Flame, not flame.execute_command():
+        # that runs open outside Flame's GUI session, where LaunchServices
+        # cannot reach Finder and fails with "procNotFound" (-600). Passing the
+        # path as a list element also removes the need to quote it for a shell.
+        result = subprocess.run(
+            ["/usr/bin/open", export_path], capture_output=True, text=True
+        )
+        if result.returncode != 0:
+            print(f"[NOTE] could not open a Finder window at {export_path}")
+            print(result.stderr.strip())
 
     if skipped:
         flame.messages.show_in_console(
